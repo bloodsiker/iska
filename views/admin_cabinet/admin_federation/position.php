@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group button-group">
-                            <button name="add_position" class="btn btn-primary pull-right">Сохранить</button>
+                            <input type="submit" name="add_position" value="Сохранить" class="btn btn-primary pull-right">
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                         </div>
                     </form>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="form-group button-group">
-                            <button name="update_position" class="btn btn-primary pull-right">Сохранить</button>
+                            <input type="submit" name="update_position" value="Сохранить" class="btn btn-primary pull-right">
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                         </div>
                     </form>

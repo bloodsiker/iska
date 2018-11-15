@@ -3,35 +3,32 @@
 namespace App\app\Controllers\admin;
 
 use App\app\Models\About;
+use App\app\Models\Documents;
 use App\app\Models\Federation;
 use App\app\Models\Representative;
 use App\components\AdminBase;
+use Josantonius\Request\Request;
+use Josantonius\Url\Url;
+use upload as FileUpload;
 
 class AdminFederationController extends AdminBase
 {
+    const PATH_UPLOAD = "/upload/docs/";
 
     public function actionLeadership()
     {
-        // Проверка доступа
         self::checkAdmin();
 
         $federation = Federation::getActivityById(1);
 
-        // Обработка формы
         if (isset($_POST['update'])) {
-            // Если форма отправлена
-            // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $text = $_POST['text'];
-
             Federation::updateActivityById(1, $text);
-
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/leadership.php');
+        $this->render('admin_cabinet/admin_federation/leadership', compact('federation'));
         return true;
-
     }
 
 
@@ -40,26 +37,17 @@ class AdminFederationController extends AdminBase
      */
     public function actionCalendar()
     {
-        // Проверка доступа
         self::checkAdmin();
 
         $federation = Federation::getActivityById(2);
 
-        // Обработка формы
         if (isset($_POST['update'])) {
-            // Если форма отправлена
-            // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $text = $_POST['text'];
-
-
             Federation::updateActivityById(2, $text);
-
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/calendar.php');
+        $this->render('admin_cabinet/admin_federation/calendar', compact('federation'));
         return true;
     }
 
@@ -68,107 +56,79 @@ class AdminFederationController extends AdminBase
      */
     public function actionRules()
     {
-        // Проверка доступа
         self::checkAdmin();
 
         $federation = Federation::getActivityById(3);
 
-        // Обработка формы
         if (isset($_POST['update'])) {
-            // Если форма отправлена
-            // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $text = $_POST['text'];
-
-
             Federation::updateActivityById(3, $text);
-
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/rules.php');
+        $this->render('admin_cabinet/admin_federation/rules', compact('federation'));
         return true;
     }
 
-
     public function actionPosition()
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        //$federation = Federation::getActivityById(4);
+        $listPosition = Documents::getListDocuments(Documents::TYPE_POSITION);
 
-        $listPosition = Federation::getListPosition();
-
-
-        if(isset($_POST['add_position'])){
-            $name = $_FILES['file']['name'];
+        if(Request::post('add_position')){
+            $options['type_doc'] = Documents::TYPE_POSITION;
             $options['title'] = $_POST['title'];
+            $options['path'] = self::PATH_UPLOAD;
 
-            // Все загруженные файлы помещаются в эту папку
-            $options['path'] = "/upload/docs/";
-            $randomName = substr_replace(sha1(microtime(true)), '', 12);
-
-            // Получаем расширение файла
-            $getMime = explode('.', $name);
-            $mime = end($getMime);
-
-            $randomName =  $randomName . "." . $mime;
-            $options['file'] = $randomName;
-
-            Federation::createPosition($options);
-
-            // Проверим, загружалось ли через форму изображение
-            if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
-                // Если загружалось, переместим его в нужную папке, дадим новое имя
-                move_uploaded_file($_FILES["file"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $options['path'] . $options['file']);
+            if (Request::files('file')) {
+                $handle = new FileUpload(Request::files('file'));
+                if ($handle->uploaded) {
+//                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
+                    $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
+                    $options['file'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+                    $handle->process(ROOT . self::PATH_UPLOAD);
+                    if ($handle->processed) {
+                        $handle->clean();
+                    }
+                }
             }
 
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            if (Documents::createDocument($options)) {
+                Url::previous();
+            }
         }
 
-        if(isset($_POST['update_position'])){
+        if(Request::post('update_position')){
             $id = $_POST['id_position'];
             $title = $_POST['title'];
 
-            Federation::updatePositionById($id, $title);
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Documents::updateDocumentById($id, $title);
+            Url::previous();
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/position.php');
+        $this->render('admin_cabinet/admin_federation/position', compact('listPosition'));
         return true;
     }
 
     public function actionAjaxPosition()
     {
-        // Проверка доступа
         self::checkAdmin();
 
         if($_REQUEST['action'] == 'position'){
             $id_pos = $_REQUEST['position_id'];
-            $result = Federation::getPositionById($id_pos);
+            $result = Documents::getDocumentById($id_pos);
             print_r($result['title']);
         }
-
 
         return true;
     }
 
     public function actionDeletePosition($id)
     {
-        // Проверка доступа
         self::checkAdmin();
-
-        // Если форма отправлена
-        // Удаляем фото
-        Federation::deletePositionById($id);
-
-        // Перенаправляем пользователя на страницу управлениями товарами
-        header("Location: " . $_SERVER['HTTP_REFERER']);
+        Documents::deleteDocumentById($id);
+        Url::previous();
 
         return true;
     }
@@ -184,12 +144,10 @@ class AdminFederationController extends AdminBase
             $title = $_POST['title'];
 
             About::updateCongratulation(2, $text, $title);
-
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/representative/regions.php');
+        $this->render('admin_cabinet/admin_federation/representative/regions', compact('regions'));
         return true;
     }
 
@@ -207,53 +165,53 @@ class AdminFederationController extends AdminBase
             $club = $_POST['club'];
 
             Representative::createClub($id, $city, $club);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['add_email'])) {
             $email = $_POST['email'];
 
             Representative::createEmailClub($id, $email);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['edit_representative'])) {
             $representative = $_POST['representative'];
 
             Representative::updateRepresentativeById($id, $representative);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['add_phone'])) {
             $phone = $_POST['phone'];
 
             Representative::createPhoneClub($id, $phone);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['delete_club']) && $_POST['delete_club'] === 'true') {
             $id = $_POST['id'];
 
             Representative::deleteClubById($id);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['delete_email']) && $_POST['delete_email'] === 'true') {
             $id = $_POST['id'];
 
             Representative::deleteEmailById($id);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         if (isset($_POST['delete_phone']) && $_POST['delete_phone'] === 'true') {
             $id = $_POST['id'];
 
             Representative::deletePhoneById($id);
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_federation/representative/region_clubs.php');
+        $this->render('admin_cabinet/admin_federation/representative/region_clubs',
+            compact('region', 'regionClubs', 'regionEmails', 'regionPhones'));
         return true;
     }
-
 }

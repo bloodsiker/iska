@@ -2,6 +2,7 @@
 
 namespace App\app\Controllers;
 
+use App\app\Models\Documents;
 use App\app\Models\Federation;
 use App\app\Models\Representative;
 use App\vendor\controller\Controller;
@@ -15,7 +16,7 @@ class FederationController extends Controller
 
         $federation = Federation::getActivityById(1);
 
-        require_once(ROOT . '/views/federation/leadership.php');
+        $this->render('federation/leadership', compact('title', 'federation'));
         return true;
     }
 
@@ -32,7 +33,7 @@ class FederationController extends Controller
             return $value;
         }, $regions);
 
-        require_once(ROOT . '/views/federation/representative.php');
+        $this->render('federation/representative', compact('title', 'regions'));
         return true;
     }
 
@@ -42,10 +43,9 @@ class FederationController extends Controller
 
         $federation = Federation::getActivityById(2);
 
-        require_once(ROOT . '/views/federation/calendar_2016.php');
+        $this->render('federation/calendar_2016', compact('title', 'federation'));
         return true;
     }
-
 
     public function actionRules()
     {
@@ -53,10 +53,9 @@ class FederationController extends Controller
 
         $federation = Federation::getActivityById(3);
 
-        require_once(ROOT . '/views/federation/rules.php');
+        $this->render('federation/rules', compact('title', 'federation'));
         return true;
     }
-
 
     public function actionPosition()
     {
@@ -64,9 +63,9 @@ class FederationController extends Controller
 
         $federation = Federation::getActivityById(4);
 
-        $listPosition = Federation::getListPosition();
+        $listPosition = Documents::getListDocuments(Documents::TYPE_POSITION);
 
-        require_once(ROOT . '/views/federation/position.php');
+        $this->render('federation/position', compact('title', 'federation', 'listPosition'));
         return true;
     }
 

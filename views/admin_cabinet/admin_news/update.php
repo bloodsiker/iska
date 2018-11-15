@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="form-group button-group">
-                                <button name="update" class="btn btn-primary pull-right">Сохранить</button>
+                                <input type="submit" name="update" value="Сохранить" class="btn btn-primary pull-right">
                                 &nbsp;
                                 <a href="/admin/news" class="btn btn-default pull-right">Отмена
                                 </a>
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="form-group button-group">
-                                <button name="add_img" class="btn btn-primary pull-right">Добавить изображение</button>
+                                <input type="submit" name="add_img" value="Добавить изображение" class="btn btn-primary pull-right">
                             </div>
                         </form>
 
@@ -163,8 +163,8 @@
         <!-- Main row -->
 
 
-    </section><!-- /.content -->
-</div><!-- /.content-wrapper -->
+    </section>
+</div>
 
 <?php require_once ROOT . '/views/layouts/footer_admin.php'?>
 

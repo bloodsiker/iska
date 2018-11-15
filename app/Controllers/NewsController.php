@@ -19,6 +19,7 @@ class NewsController extends Controller
         $newsList = News::getNewsListSite('ukrainian');
 
         $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        return true;
     }
 
     public function actionIskaPro()
@@ -29,6 +30,7 @@ class NewsController extends Controller
         $newsList = News::getNewsListSite('iska-pro');
 
         $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        return true;
     }
 
     public function actionInternational()
@@ -39,6 +41,7 @@ class NewsController extends Controller
         $newsList = News::getNewsListSite('international');
 
         $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        return true;
     }
 
 
@@ -51,6 +54,7 @@ class NewsController extends Controller
         $fotoByNews = News::getImgNewsList($id);
 
         $this->render('news/view', compact('title', 'news', 'fotoByNews'));
+        return true;
     }
 
 }

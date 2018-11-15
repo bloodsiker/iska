@@ -25,6 +25,7 @@ class MediaController extends Controller
         $videoList = Media::getVideoList(0);
 
         $this->render('media/video', compact('title', 'videoList'));
+        return true;
     }
 
     public function actionPhotoAlbum($id)
@@ -36,6 +37,7 @@ class MediaController extends Controller
         $photoList = Media::getPhotoByListAlbum($id);
 
         $this->render('media/photo_view', compact('title', 'album', 'photoList'));
+        return true;
     }
 
     public function actionArchivePhoto()
@@ -45,6 +47,7 @@ class MediaController extends Controller
         $photoAlbumList = Media::getListAlbum(1);
 
         $this->render('media/archive_photo', compact('title', 'photoAlbumList'));
+        return true;
     }
 
     public function actionArchiveVideo()
@@ -54,5 +57,6 @@ class MediaController extends Controller
         $videoList = Media::getVideoList(1);
 
         $this->render('media/archive_video', compact('title', 'videoList'));
+        return true;
     }
 }

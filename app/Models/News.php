@@ -83,17 +83,15 @@ class News
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO news '
-            . '(category, title, description, text, path, img, status, data_create)'
+            . '(category, title, description, text, status, data_create)'
             . 'VALUES '
-            . '(:category, :title, :description, :text, :path, :img, :status, :data_create)';
+            . '(:category, :title, :description, :text, :status, :data_create)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':category', $options['category'], PDO::PARAM_STR);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':text', $options['text'], PDO::PARAM_STR);
-        $result->bindParam(':path', $options['path'], PDO::PARAM_STR);
-        $result->bindParam(':img', $options['img'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
         $result->bindParam(':data_create', $options['data_create'], PDO::PARAM_STR);
         if ($result->execute()) {

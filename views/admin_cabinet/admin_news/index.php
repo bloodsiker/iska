@@ -37,10 +37,18 @@
                                         <td><?= App\app\Models\News::getNameCategory($news['category'])?></td>
                                         <td><div class="<?= App\app\Models\News::getColorNews($news['status'])?>"><?= App\app\Models\News::getStatusNews($news['status'])?></div></td>
                                         <td><?= App\components\Functions::replaceTypeDate($news['data_create']); ?></td>
-                                        <td><a href="news/update/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Редактировать"><i
-                                                    class="fa fa-pencil-square-o"></i></a>
+                                        <td>
+                                            <a href="/news/<?= $news['category']; ?>/<?= $news['id']; ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                             &nbsp;
-                                            <a href="news/delete/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Удалить"><i class="glyphicon glyphicon-trash delete"></i></a>
+                                            <a href="/admin/news/update/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Редактировать">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                            &nbsp;
+                                            <a href="/admin/news/delete/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Удалить">
+                                                <i class="glyphicon glyphicon-trash delete"></i>
+                                            </a>
                                         </td>
 
                                     </tr>
@@ -116,7 +124,7 @@
                             </div>
                         </div>
                         <div class="form-group button-group">
-                            <button name="create" class="btn btn-primary pull-right">Сохранить</button>
+                            <input type="submit"name="create" value="Сохранить" class="btn btn-primary pull-right">
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                         </div>
                     </form>

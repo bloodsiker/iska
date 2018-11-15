@@ -6,7 +6,9 @@ $('body').on('click', '.update-position', function(e){
     var position = $(this);
     var position_id = position.data('position');
     var data = "action=position&position_id=" + position_id;
-    //alert(data);
+
+    $('#title_position').val('');
+    $('#id_position').val('');
 
     $.ajax({
         url: "/admin/federation/position/ajax",

@@ -25,6 +25,7 @@ class SiteController extends Controller
 
         $this->render('site/index', compact('title','listNews',
             'listBanners', 'congratulation'));
+        return true;
     }
 
 
@@ -33,6 +34,7 @@ class SiteController extends Controller
         $title = '- Контакти';
 
         $this->render('site/contact', compact('title'));
+        return true;
     }
 
 
@@ -43,6 +45,7 @@ class SiteController extends Controller
         $history = About::getHistory(1);
 
         $this->render('site/history', compact('title', 'history'));
+        return true;
     }
 
 }

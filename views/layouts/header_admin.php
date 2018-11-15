@@ -119,6 +119,7 @@
                         '/admin/federation/calendar',
                         '/admin/federation/position',
                         '/admin/federation/list-regions',
+                        '/admin/federation/regions-club',
                         '/admin/federation/rules'])?> treeview">
                     <a href="#">
                         <i class="fa fa-th"></i> <span>Федерація</span> <i class="fa fa-angle-left pull-right"></i>
@@ -139,7 +140,7 @@
                                 <i class="fa fa-th"></i> <span>Назва розділів</span>
                             </a>
                         </li>
-                        <li class="<?= App\components\Url::IsActive('/admin/federation/list-regions')?> treeview">
+                        <li class="<?= App\components\Url::IsActive(['/admin/federation/list-regions', '/admin/federation/regions-club'])?> treeview">
                             <a href="/admin/federation/list-regions">
                                 <i class="fa fa-th"></i> <span>Представники в регіонах</span>
                             </a>
