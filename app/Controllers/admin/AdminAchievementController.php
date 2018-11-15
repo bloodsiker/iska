@@ -1,0 +1,108 @@
+<?php
+
+namespace App\app\Controllers\admin;
+
+use App\app\Models\Achievement;
+use App\components\AdminBase;
+use Josantonius\Url\Url;
+
+class AdminAchievementController extends AdminBase
+{
+
+    public function actionInternational()
+    {
+        self::checkAdmin();
+
+        $categoryList = Achievement::getCategoryList();
+
+        // Обработка формы
+        if (isset($_POST['add_category'])) {
+            $category = $_POST['category'];
+            $name = $_POST['name'];
+            $alias = $_POST['alias'];
+
+            Achievement::createCategory($category, $name, $alias);
+
+            Url::previous();
+        }
+
+        require_once(ROOT . '/views/admin_cabinet/admin_achievement/international.php');
+        return true;
+
+    }
+
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public function actionInternationalView($id)
+    {
+        self::checkAdmin();
+
+        $achievement = Achievement::getAchievementById($id);
+
+        $categoryList = Achievement::getCategoryList();
+
+        if (isset($_POST['add_category'])) {
+            $category = $_POST['category'];
+            $name = $_POST['name'];
+            $alias = $_POST['alias'];
+
+            Achievement::createCategory($category, $name, $alias);
+
+            Url::previous();
+        }
+
+
+        if (isset($_POST['update'])) {
+            $title = $_POST['title'];
+            $text = $_POST['text'];
+
+            Achievement::updateAchievementById($id, $title, $text);
+
+            Url::previous();
+        }
+
+        require_once(ROOT . '/views/admin_cabinet/admin_achievement/intern_view.php');
+        return true;
+
+    }
+
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function actionCategoryDelete($id)
+    {
+        self::checkAdmin();
+
+        $ok = Achievement::deleteCategoryById($id);
+        if($ok){
+            Url::previous();
+        }
+        return true;
+    }
+
+
+    public function actionPersonal()
+    {
+        self::checkAdmin();
+
+        $achievement = Achievement::getAchievementById(2);
+
+        if (isset($_POST['update'])) {
+            $text = $_POST['text'];
+
+            Achievement::updateAchievementById(2, $text);
+
+            Url::previous();
+        }
+
+        require_once(ROOT . '/views/admin_cabinet/admin_achievement/personal.php');
+        return true;
+    }
+
+
+}

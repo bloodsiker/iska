@@ -1,0 +1,70 @@
+/*************************
+******* auth CSS ********
+**************************/
+ul li {
+    list-style: none;
+}
+
+
+/* =====Login=====*/
+body[role="login"] {
+    font-family: 'Roboto', sans-serif;
+    background: url(/template/dist/img/blur-bg.jpg) center center no-repeat fixed;
+    background-size: cover;
+    color: #EFEFEF
+}
+[role="login"] .container {
+    margin-top: 200px
+}
+[role="login"] .btn-success {
+    background: rgba(0, 0, 0,.4);
+    border: 1px solid #fff;
+    float: right;
+}
+[role="login"] .btn-success:active {
+    background: rgba(255, 255, 255,.4);
+    border: 1px solid #fff;
+    float: right;
+    outline: none;
+}
+[role="login"] label {
+    font-weight: normal;
+    color: #FFF
+}
+.panel-heading {
+    padding: 5px 15px;
+}
+.form-inline {
+    margin: 5px
+}
+.panel-footer {
+    padding: 1px 15px;
+    color: #A0A0A0;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #FFF, rgba(0, 0, 0, 0));
+    margin: 25px
+}
+.profile-img {
+    margin: 0 auto 10px;
+    display: block;
+}
+.panel-default {
+    opacity: .9;
+    -webkit-box-shadow: 0px 7px 24px 1px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0px 7px 24px 1px rgba(0,0,0,0.45);
+    box-shadow: 0px 7px 24px 1px rgba(0,0,0,0.45);
+    background: transparent url('/template/dist/img/bg-white.png') repeat scroll 0% 0%;
+}
+
+.img-products {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    float: left;
+    border: 1px solid #fff;
+    position: relative;
+}
+

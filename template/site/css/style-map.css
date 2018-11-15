@@ -1,0 +1,333 @@
+#mapwrap {
+
+    background: #fff;
+  padding-top: 40px!important;
+
+}
+.hidden-map {
+  display: none;
+}
+.four {
+}
+.bookmark-map {
+}
+
+.four g polygon:hover,
+.four g path:hover, .four g polygon:active,
+.four g path:active {
+  fill: #25d1f0;
+  cursor: pointer;
+  stroke: #25d1f0;
+  transition: .5s;
+}
+.four #Land path:hover {
+  fill: #25d1f0 ;
+  stroke: #25d1f0;
+  transition: .5s;
+}
+.four #Land path:hover .p-city {
+  fill: #25d1f0 ;
+  stroke: #25d1f0;
+  color: #fff;
+  transition: .5s;
+}
+.four g polygon:hover .p-city,
+.four g path:hover .p-city, .four g polygon:active .p-city,
+.four g path:active .p-city{
+  fill: #25d1f0;
+  cursor: pointer;
+  stroke: #25d1f0;
+  transition: .5s;
+}
+.four #Land {
+  pointer-events: none;
+}
+.four .popup-wrap {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.four .p-item {
+  width: 205px;
+  height: auto;
+  background: #383838;
+  color: #fff;
+  position: absolute;
+  z-index: 999;
+  text-align: center;
+  font-family: "GothamProLight";
+  padding: 6px 10px 0;
+}
+.four .p-city {
+  color: #fff;
+  position: absolute;
+  z-index: 99;
+  font-size: 13px;
+  font-family: "GothamProLight";
+}
+.four .p-item p {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.four .arrow {
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  background: url(arr.png) no-repeat center center;
+  width: 100%;
+  height: 7px;
+  display: inline-block;
+}
+.four .order {
+  width: 185px;
+height: 37px;
+background: #ffd800;
+border: none;
+outline: none;
+border-radius: 25px;
+font-size: 10px;
+font-family: "GothamProMedium";
+color: #383838;
+transition: .3s;
+padding: 13px;
+display: inline-block;
+margin-top: 0px;
+cursor: pointer;
+}
+.four .order:hover {
+  text-decoration: none;
+}
+.four #lutsk {
+  display: none;
+  top: 37px;
+  left: 79px;
+}
+.four #lutsk2 {
+  top: 128px;
+  left: 162px;
+}
+.four #lviv {
+  display: none;
+  top: 110px;
+  left: 38px;
+}
+.four #lviv2 {
+  top: 236px;
+  left: 120px;
+}
+.four #karpaty {
+  display: none;
+ top: 255px;
+left: 17px;
+}
+.four #karpaty2 {
+  top: 345px;
+  left: 74px;
+  -webkit-transform: rotate(29deg);
+  -moz-transform: rotate(29deg);
+  -ms-transform: rotate(29deg);
+  -o-transform: rotate(29deg);
+}
+.four #rivneC {
+  display: none;
+  top: 0px;
+  left: 168px;
+}
+.four #rivneC2 {
+  top: 115px;
+  left: 257px;
+}
+.four #tern {
+  display: none;
+  top: 140px;
+  left: 117px;
+}
+.four #tern2 {
+  top: 260px;
+  left: 204px;
+}
+.four #frank {
+  display: none;
+  top: 160px;
+  left: 75px;
+}
+.four #frank2 {
+  top: 312px;
+  left: 143px;
+}
+.four #zhyt {
+  display: none;
+  top: 25px;
+  left: 258px;
+}
+.four #zhyt2{
+  top: 167px;
+  left: 333px;
+}
+.four #Khmelnytsk {
+  display: none;
+  top: 163px;
+  left: 186px;
+}
+.four #Khmelnytsk2 {
+  top: 250px;
+  left: 263px;
+}
+.four #Chernivt {
+  display: none;
+  top: 272px;
+  left: 128px;
+}
+.four #Chernivt2 {
+  top: 363px;
+  left: 207px;
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+}
+.four #Vinnyts {
+  display: none;
+  top: 180px;
+  left: 268px;
+}
+.four #Vinnyts2 {
+  top: 300px;
+  left: 357px;
+}
+.four #Kie {
+  display: none;
+  top: 0px;
+  left: 360px;
+}
+.four #Kie2 {
+  top: 178px;
+  left: 444px;
+}
+.four #Cherkas {
+  display: none;
+  top: 192px;
+  left: 425px;
+}
+.four #Cherkas2 {
+  top: 279px;
+  left: 506px;
+}
+.four #Kirovoh {
+  display: none;
+  top: 249px;
+  left: 458px;
+}
+.four #Kirovoh2 {
+  top: 336px;
+  left: 523px;
+}
+.four #Odesa {
+  display: none;
+  top: 286px;
+  left: 353px;
+}
+.four #Odesa2 {
+  top: 427px;
+  left: 439px;
+}
+.four #Mykolai {
+  display: none;
+  top: 326px;
+  left: 430px;
+}
+.four #Mykolai2 {
+  top: 411px;
+  left: 509px;
+}
+.four #Khers {
+  display: none;
+  top: 343px;
+  left: 530px;
+}
+.four #Khers2 {
+  top: 466px;
+  left: 609px;
+}
+.four #Zapor {
+  display: none;
+  top: 303px;
+  left: 630px;
+}
+.four #Zapor2 {
+  top: 428px;
+  left: 707px;
+}
+.four #Dnipropet {
+  display: none;
+  top: 198px;
+  left: 600px;
+}
+.four #Dnipropet2 {
+  top: 339px;
+  left: 657px;
+}
+.four #Polt {
+  display: none;
+  top: 95px;
+  left: 525px;
+}
+.four #Polt2 {
+  top: 238px;
+  left: 608px;
+}
+.four #Sum {
+  display: none;
+  top: 63px;
+  left: 555px;
+}
+.four #Sum2 {
+  top: 151px;
+  left: 639px;
+}
+.four #Chernih {
+  display: none;
+  top: 0px;
+  left: 427px;
+}
+.four #Chernih2 {
+  top: 103px;
+  left: 511px;
+}
+.four #Khark {
+  display: none;
+  top: 109px;
+  left: 673px;
+}
+.four #Khark2 {
+  top: 252px;
+  left: 752px;
+}
+.four #Donet {
+  display: none;
+  top: 227px;
+  left: 729px;
+}
+.four #Donet2 {
+  top: 369px;
+  left: 814px;
+}
+.four #Luhan {
+  display: none;
+  top: 166px;
+  left: 794px;
+}
+.four #Luhan2 {
+  top: 291px;
+  left: 875px;
+}
+.four #Crim {
+  display: none;
+  top: 420px;
+  left: 551px;
+}
+.four #Crim2 {
+  top: 575px;
+  left: 646px;
+}
+

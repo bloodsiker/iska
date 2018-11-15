@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" prefix='og: http://ogp.me/ns#'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ISKA <?=$title?></title>
+    <meta name="author" content="Овсийчук Дмитрий" />
+    <meta name="description" content="" />
+    <meta name="keywords"  content="" />
+    <meta name="Resource-type" content="Document" />
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://<?=$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']?>">
+    <meta property="og:title" content="<?=$title?>">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="http://iska.com.ua<?=$news['path'] . $news['img']?>" />
+    <link href="/template/site/img/icon/favicon.png" rel="shortcut icon">
+    <link rel="stylesheet" href="/template/site/css/style.css">
+    <link rel="stylesheet" href="/template/site/css/colorbox.css">
+
+    <link href="/template/site/css/galleriffic.css" rel="stylesheet" type="text/css" />
+    <link href="/template/site/css/main.css" rel="stylesheet" type="text/css" />
+
+
+
+    <script src="/template/site/js/jquery.js"></script>
+    <script src="/template/site/js/jquery.cycle2.min.js"></script>
+    <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
+
+
+    <script type="text/javascript" src="/template/site/js/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="/template/site/js/jquery.history.js"></script>
+    <script type="text/javascript" src="/template/site/js/jquery.galleriffic.js"></script>
+    <script type="text/javascript" src="/template/site/js/jquery.opacityrollover.js"></script>
+    <script type="text/javascript" src="/template/site/js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Examples of how to assign the Colorbox event to elements
+
+            $(".ajax").colorbox();
+
+        });
+    </script>
+
+
+    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/analytics.php'?>
+</head>
+<body>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/tagmanager.php'?>
+
+<!-- HEAD AND MENU  -->
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/menu-header.php'?>
+
+
+<section class="displ-slide">
+    <div class="container main">
+        <div class="slider-block">
+            <div class="new-photo-gallery">
+
+                <div class="content">
+                    <div class="slideshow-container">
+                        <!--<div id="controls" class="controls"></div>-->
+                        <div id="loading" class="loader"></div>
+                        <div id="slideshow" class="slideshow"></div>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+
+                <div class="navigation-container">
+                    <div id="thumbs" class="navigation">
+                        <a class="pageLink prev" style="visibility: hidden;" href="#" title="Previous Page"></a>
+
+                        <ul class="thumbs">
+                            <li>
+                                <a class="thumb" name="photo3" href="<?=$news['path'] . $news['img']?>" title="photo">
+                                    <img src="<?=$news['path'] . $news['img']?>" width="90" alt="Title #1" />
+                                </a>
+                            </li>
+                            <?php if (is_array($fotoByNews)): ?>
+                                <?php foreach ($fotoByNews as $foto): ?>
+                                    <li>
+                                        <a class="thumb" name="photo3" href="<?= $foto['path'] . $foto['img'] ?>"
+                                           title="photo">
+                                            <img src="<?= $foto['path'] . $foto['img'] ?>" width="90" alt="Title #1"/>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <!--
+                            <li>
+                                <a class="thumb" name="photo2" href="images/pic2.jpg" title="Title #2">
+                                    <img src="images/t_pic2.jpg" alt="Title #2" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="thumb" name="photo3" href="images/pic3.jpg" title="Title #3">
+                                    <img src="images/t_pic3.jpg" alt="Title #3" />
+                                </a>
+                            </li>
+
+                            -->
+
+                        </ul>
+                        <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div class="news scientific">
+                <div class="news-description">
+                    <h1><?=$news['title']?></h1>
+                    <hr>
+                    <div class="news-breadcrumb-title" style="">
+                        <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<a href="/news/<?=$news['category']?>/"><?=\App\app\Models\News::getNameCategory($news['category'])?></a>
+                    </div>
+                    <?=$news['text']?>
+                </div>
+            </div>
+
+        </div>
+        <?php require_once ROOT . '/views/layouts/sidebar.php'?>
+
+        <?php require_once ROOT . '/views/layouts/articles.php'?>
+    </div>
+</section>
+
+
+
+<?php require_once ROOT . '/views/layouts/footer.php'?>
+
+</body>
+</html>

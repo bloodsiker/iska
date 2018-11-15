@@ -1,0 +1,8 @@
+.idea
+.env
+upload/
+vendor/composer
+vendor/josantonius
+vendor/josegonzalez
+vendor/m1
+vendor/verot
