@@ -7,7 +7,6 @@ namespace App\vendor\router;
  */
 class Router
 {
-
     /**
      * @var string
      */
@@ -22,7 +21,6 @@ class Router
      * @var
      */
     private $uri;
-
 
     /**
      * Router constructor.
@@ -97,7 +95,6 @@ class Router
                 $controllerName = str_replace('/', '\\', $controllerName);
                 $newControllerName = 'App\\app\\Controllers\\' . $controllerName;
 
-//                print_r($controllerFile);die;
                 // Создать объект, вызвать метод (т.е. action)
                 $controllerObject = new $newControllerName();
 
