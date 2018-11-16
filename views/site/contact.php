@@ -14,12 +14,6 @@
     <link rel="stylesheet" href="/template/site/css/style.css?v.1.1">
     <link rel="stylesheet" href="/template/site/css/colorbox.css">
 
-    <link href="/template/site/css/galleriffic.css" rel="stylesheet" type="text/css" />
-    <link href="/template/site/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/template/site/css/imagehover.min.css" rel="stylesheet" type="text/css" />
-
-
-
     <script src="/template/site/js/jquery.js"></script>
     <script src="/template/site/js/jquery.cycle2.min.js"></script>
     <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
@@ -29,24 +23,15 @@
 
     <script>
         $(document).ready(function(){
-            //Examples of how to assign the Colorbox event to elements
-
             $(".ajax").colorbox();
-            $(".youtube").colorbox({iframe:true, innerWidth:840, innerHeight:490});
-            $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
-
         });
     </script>
-
-
     <?php require_once ROOT . '/views/layouts/analytics.php'?>
 </head>
 <body>
 <?php require_once ROOT . '/views/layouts/tagmanager.php'?>
-<!-- HEAD AND MENU  -->
+
 <?php require_once ROOT . '/views/layouts/menu-header.php'?>
-
-
 
 <section class="displ-slide">
     <div class="container main">
@@ -70,7 +55,6 @@
 
     </div>
 </section>
-
 
 <?php require_once ROOT . '/views/layouts/footer.php'?>
 

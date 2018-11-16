@@ -30,7 +30,7 @@ class AdminNewsController extends AdminBase
             if ($id && Request::files('image')) {
                 $handle = new FileUpload(Request::files('image'));
                 if ($handle->uploaded) {
-                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
                     $path = "/upload/news/" . $options['category'] . "/";
                     $imgName = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
@@ -72,7 +72,7 @@ class AdminNewsController extends AdminBase
             if (News::updateNewsById($id, $options) && Request::files('image')) {
                 $handle = new FileUpload(Request::files('image'));
                 if ($handle->uploaded) {
-                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
 //                        $handle->image_resize       = true;
 //                        if(($handle->image_x / $handle->image_y >= 1.3) || ($handle->image_x / $handle->image_y <= 1.8)){
@@ -98,7 +98,7 @@ class AdminNewsController extends AdminBase
         if (Request::post('add_img')) {
             $handle = new FileUpload(Request::files('image'));
             if ($handle->uploaded) {
-                $handle->allowed = array('image/jpeg','image/jpg','image/png');
+                $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                 $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
                 $path = "/upload/news/images/";
                 $imgName = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
@@ -123,14 +123,12 @@ class AdminNewsController extends AdminBase
         self::checkAdmin();
 
         $imgInfo = News::getImgById($id);
-
         $ok = News::deletfile($imgInfo['path'],$imgInfo['img']);
 
         if($ok){
             News::deleteFileById($id);
         }
         Url::previous();
-
         return true;
     }
 

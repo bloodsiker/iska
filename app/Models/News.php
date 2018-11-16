@@ -19,7 +19,6 @@ class News
 
         $result = $db->prepare($sql);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -68,7 +67,6 @@ class News
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -192,7 +190,6 @@ class News
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -234,7 +231,9 @@ class News
                 unlink(ROOT . "$directory/$file");
 
                 // Если файла нет по запрошенному пути, возвращаем TRUE - значит файл удалён.
-                if(!file_exists(ROOT . $directory."/".$filename)) return $s = TRUE;
+                if (!file_exists(ROOT . $directory."/".$filename)) {
+                    return true;
+                }
             }
         }
         // Закрываем дескриптор директории.

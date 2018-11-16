@@ -10,6 +10,11 @@ class Documents
     const TYPE_POSITION   = 1;
     const TYPE_SCIENTIFIC = 2;
 
+    /**
+     * @param $options
+     *
+     * @return int|string
+     */
     public static function createDocument($options)
     {
         $db = MySQL::getConnection();
@@ -30,6 +35,11 @@ class Documents
         return 0;
     }
 
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
     public static function getDocumentById($id)
     {
         $db = MySQL::getConnection();
@@ -59,7 +69,11 @@ class Documents
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
     public static function deleteDocumentById($id)
     {
         $db = MySQL::getConnection();
@@ -71,6 +85,12 @@ class Documents
         return $result->execute();
     }
 
+    /**
+     * @param $id
+     * @param $title
+     *
+     * @return bool
+     */
     public static function updateDocumentById($id, $title)
     {
         $db = MySQL::getConnection();

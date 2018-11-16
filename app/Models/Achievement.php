@@ -7,97 +7,75 @@ use PDO;
 
 class Achievement
 {
-
     /**
-     * Возвращает публикацию с указанным id
-     * @param integer $id <p>id bannera</p>
-     * @return array <p>Массив с информацией о bannere</p>
+     * @param $id
+     *
+     * @return mixed
      */
     public static function getAchievementById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'SELECT * FROM achievement WHERE id = :id';
 
-        // Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполнение коменды
         $result->execute();
-
-        // Получение и возврат результатов
-        return $result->fetch();
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $alias
+     *
+     * @return mixed
+     */
     public static function getAchievementByAlias($alias)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'SELECT * FROM achievement WHERE alias = :alias';
 
-        // Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':alias', $alias, PDO::PARAM_STR);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполнение коменды
         $result->execute();
-
-        // Получение и возврат результатов
-        return $result->fetch();
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
 
     /**
-     * Возвращает список категорий в админ-панель
-     * @return array <p>Массив с товарами</p>
+     * @param string $category
+     *
+     * @return array
      */
     public static function getCategoryList($category = 'international')
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Получение и возврат результатов
-        $result = $db->query("SELECT * FROM achievement WHERE category = '$category' ORDER BY id ASC");
-        $categoryList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $categoryList[$i]['id'] = $row['id'];
-            $categoryList[$i]['alias'] = $row['alias'];
-            $categoryList[$i]['title'] = $row['title'];
-            $i++;
-        }
-        return $categoryList;
+        $sql = "SELECT * FROM achievement WHERE category = :category ORDER BY id ASC";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':category', $category, PDO::PARAM_STR);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
     /**
-     * @param $options
+     * @param $category
+     * @param $name
+     * @param $alias
+     *
      * @return bool
      */
     public static function createCategory($category, $name, $alias)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-
-        // Текст запроса к БД
         $sql = 'INSERT INTO achievement '
             . '(category, title, alias)'
             . 'VALUES '
             . '(:category, :title, :alias)';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':category', $category, PDO::PARAM_STR);
         $result->bindParam(':title', $name, PDO::PARAM_STR);
@@ -112,22 +90,18 @@ class Achievement
      */
     public static function updateAchievementById($id, $title, $text)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = "UPDATE achievement
             SET
                 title = :title,
                 text = :text
             WHERE id = :id";
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':title', $title, PDO::PARAM_STR);
         $result->bindParam(':text', $text, PDO::PARAM_STR);
-
         return $result->execute();
     }
 
@@ -138,16 +112,12 @@ class Achievement
      */
     public static function deleteCategoryById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'DELETE FROM achievement WHERE id = :id';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
     }
-
 }

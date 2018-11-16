@@ -30,7 +30,6 @@ class Admin
         $admin = $result->fetch(PDO::FETCH_ASSOC);
 
         if ($admin) {
-
             return $admin['id'];
         }
         return false;

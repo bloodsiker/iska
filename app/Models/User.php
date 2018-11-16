@@ -8,76 +8,48 @@ use PDO;
 class User
 {
 
-    /**
-     * Возвращает список пользователей в админ-панель
-     * @return array <p>Массив с товарами</p>
-     */
     public static function getUserListAdmin()
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Получение и возврат результатов
-        $result = $db->query("SELECT * FROM admin ORDER BY id ASC");
-        $userList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $userList[$i]['id'] = $row['id'];
-            $userList[$i]['login'] = $row['login'];
-            $userList[$i]['name'] = $row['name'];
-            $userList[$i]['email'] = $row['email'];
-            $userList[$i]['role'] = $row['role'];
-            $userList[$i]['data_create'] = $row['data_create'];
-            $userList[$i]['data_update'] = $row['data_update'];
-            $i++;
-        }
-        return $userList;
+        $sql = 'SELECT * FROM admin ORDER BY id';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
-     * Возвращает данные юзера с указанным id
-     * @param integer $id <p>id юзера</p>
-     * @return array <p>Массив с информацией о пользователю</p>
+     * @param $id
+     *
+     * @return mixed
      */
     public static function getUserById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'SELECT * FROM admin WHERE id = :id';
 
-        // Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполнение коменды
         $result->execute();
-
-        // Получение и возврат результатов
-        return $result->fetch();
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
-     * Добавляет нового пользователя
-     * @param array $options <p>Массив с информацией о пользователе</p>
-     * @return integer <p>id добавленной в таблицу записи</p>
+     * @param $options
+     *
+     * @return bool
      */
     public static function createUser($options)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'INSERT INTO admin '
             . '(login, password, name, email, role,  data_create)'
             . 'VALUES '
             . '(:login, :password, :name, :email, :role, :data_create)';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':login', $options['login'], PDO::PARAM_STR);
         $result->bindParam(':password', $options['password'], PDO::PARAM_STR);
@@ -91,17 +63,15 @@ class User
 
 
     /**
-     * Редактирует banner с заданным id
-     * @param integer $id <p>id bannera</p>
-     * @param array $options <p>Массив с информацей о bannere</p>
-     * @return boolean <p>Результат выполнения метода</p>
+     * @param $id
+     * @param $options
+     *
+     * @return bool
      */
     public static function updateUserById($id, $options)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = "UPDATE admin
             SET
                 login = :login,
@@ -112,7 +82,6 @@ class User
                 data_update = :data_update
             WHERE id = :id";
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':login', $options['login'], PDO::PARAM_STR);
@@ -125,28 +94,25 @@ class User
     }
 
     /**
-     * Удаляет пользователя с указанным id
-     * @param integer $id <p>id товара</p>
-     * @return boolean <p>Результат выполнения метода</p>
+     * @param $id
+     *
+     * @return bool
      */
     public static function deleteUserById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'DELETE FROM admin WHERE id = :id';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
     }
 
     /**
-     * Проверяет имя: не меньше, чем 2 символа
-     * @param string $name <p>Имя</p>
-     * @return boolean <p>Результат выполнения метода</p>
+     * @param $name
+     *
+     * @return bool
      */
     public static function checkName($name)
     {
@@ -158,9 +124,9 @@ class User
 
 
     /**
-     * Возвращает текстое пояснение доступа прав:<br/>
-     * @param integer $availability <p>Статус</p>
-     * @return string <p>Текстовое пояснение</p>
+     * @param $availability
+     *
+     * @return string
      */
     public static function getAvailabilityRole($availability)
     {

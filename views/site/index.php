@@ -20,7 +20,6 @@
     <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
 
     <script src="/template/site/js/jquery.min.js"></script>
-    <script src="/template/site/js/jquery.tools.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
     <script src="/template/site/js/common.js"></script>
@@ -28,17 +27,8 @@
 
     <script>
         $(document).ready(function(){
-            //Examples of how to assign the Colorbox event to elements
-            $(".group1").colorbox({rel:'group1'});
-            $(".group2").colorbox({rel:'group2', transition:"fade"});
-            $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
-            $(".group4").colorbox({rel:'group4', slideshow:true});
             $(".ajax").colorbox();
             $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-            $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
-            $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-            $(".inline").colorbox({inline:true, width:"50%"});
-
         });
     </script>
 
@@ -147,15 +137,11 @@
                 <img src="/template/site/img/chemp_world.jpg" width="100%" alt="chemp_world">
             </div>
 
-            <?php require_once ROOT . '/views/layouts/articles.php'?>
         </div>
-
 
         <div class="clearfix"></div>
     </div>
 </section>
-
-
 
 <?php require_once ROOT . '/views/layouts/footer.php'?>
 

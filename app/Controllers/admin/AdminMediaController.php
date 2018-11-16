@@ -29,7 +29,7 @@ class AdminMediaController extends AdminBase
             if ($id && Request::files('image')) {
                 $handle = new FileUpload(Request::files('image'));
                 if ($handle->uploaded) {
-                    $handle->_mkdir("/upload/media/photo/{$id}");
+                    $handle->_mkdir(ROOT."/upload/media/photo/{$id}");
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = $id;
                     $options['path'] = "/upload/media/photo/";

@@ -14,44 +14,30 @@ class Event
      */
     public static function getEventById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'SELECT * FROM events WHERE id = :id';
 
-        // Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполнение коменды
         $result->execute();
-
-        // Получение и возврат результатов
-        return $result->fetch();
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
-     * Добавляет новую категорию
-     * @param array $options <p>Массив с информацией о событии</p>
-     * @return integer <p>id добавленной в таблицу записи</p>
+     * @param $options
+     *
+     * @return bool
      */
     public static function createEvent($options)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'INSERT INTO events '
             . '(title, path, img, status)'
             . 'VALUES '
             . '(:title, :path, :img, :status)';
 
-
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
         $result->bindParam(':path', $options['path'], PDO::PARAM_STR);
@@ -62,62 +48,46 @@ class Event
 
 
     /**
-     * Возвращает список категорий в админ-панель
-     * @return array <p>Массив с товарами</p>
+     * @return array
      */
     public static function getListEvent()
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Получение и возврат результатов
-        $result = $db->query("SELECT * FROM events WHERE status = '1' ORDER BY id DESC");
-        $eventList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $eventList[$i]['id'] = $row['id'];
-            $eventList[$i]['title'] = $row['title'];
-            $eventList[$i]['path'] = $row['path'];
-            $eventList[$i]['img'] = $row['img'];
-            $eventList[$i]['status'] = $row['status'];
-            $i++;
-        }
-        return $eventList;
+        $sql = 'SELECT * FROM events WHERE status = 1 ORDER BY id DESC';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getListEventByAdmin()
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Получение и возврат результатов
-        $result = $db->query("SELECT * FROM events ORDER BY id DESC");
-        $eventList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $eventList[$i]['id'] = $row['id'];
-            $eventList[$i]['title'] = $row['title'];
-            $eventList[$i]['path'] = $row['path'];
-            $eventList[$i]['img'] = $row['img'];
-            $eventList[$i]['status'] = $row['status'];
-            $i++;
-        }
-        return $eventList;
+        $sql = 'SELECT * FROM events ORDER BY id DESC';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $id
+     * @param $options
+     *
+     * @return bool
+     */
     public static function updateEventById($id, $options)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = "UPDATE events
             SET
                 title = :title,
                 status = :status
             WHERE id = :id";
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
@@ -126,22 +96,18 @@ class Event
     }
 
     /**
-     * Удаляет документ с указанным id
-     * @param integer $id <p>id документа</p>
-     * @return boolean <p>Результат выполнения метода</p>
+     * @param $id
+     *
+     * @return bool
      */
     public static function deleteEventById($id)
     {
-        // Соединение с БД
         $db = MySQL::getConnection();
 
-        // Текст запроса к БД
         $sql = 'DELETE FROM events WHERE id = :id';
 
-        // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
     }
-
 }

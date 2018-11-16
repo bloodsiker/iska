@@ -15,7 +15,6 @@ class Representative
         $sql = 'SELECT * FROM regions ORDER BY name ASC';
 
         $result = $db->query($sql);
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -28,7 +27,6 @@ class Representative
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -44,7 +42,6 @@ class Representative
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':representative', $representative, PDO::PARAM_STR);
-
         return $result->execute();
     }
 
@@ -57,7 +54,6 @@ class Representative
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -70,7 +66,6 @@ class Representative
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -83,7 +78,6 @@ class Representative
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -185,7 +179,6 @@ class Representative
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':title', $title, PDO::PARAM_STR);
         $result->bindParam(':text', $text, PDO::PARAM_STR);
-
         return $result->execute();
     }
 }

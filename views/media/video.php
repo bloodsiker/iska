@@ -16,23 +16,15 @@
     <link href="/template/site/css/main.css" rel="stylesheet" type="text/css" />
     <link href="/template/site/css/imagehover.min.css" rel="stylesheet" type="text/css" />
 
-
-
     <script src="/template/site/js/jquery.js"></script>
     <script src="/template/site/js/jquery.cycle2.min.js"></script>
     <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
 
-
     <script>
         $(document).ready(function(){
-            //Examples of how to assign the Colorbox event to elements
-
-            $(".ajax").colorbox();
             $(".youtube").colorbox({iframe:true, innerWidth:840, innerHeight:490});
-            $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
-
         });
     </script>
 
@@ -72,12 +64,10 @@
             </div>
         </div>
 
-
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>
 
     </div>
 </section>
-
 
 <?php require_once ROOT . '/views/layouts/footer.php'?>
 

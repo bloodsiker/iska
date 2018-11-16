@@ -4,7 +4,6 @@ namespace App\components;
 
 class Functions
 {
-
     // Обрезаем сообщение от пользователя
     public static function crop_str($string, $limit= '50')
     {
@@ -27,18 +26,6 @@ class Functions
         }
     }
 
-
-    public static function crop_name_product($string, $limit= '35')
-    {
-        if(strlen($string) > 50) {
-            $first = mb_substr($string, 0, $limit, 'UTF-8');
-            return $first . '...';
-        } else {
-            return $string;
-        }
-    }
-
-
     // Получаем id видео lODeKZUOjpY
     public static function crop_video_url($url)
     {
@@ -52,15 +39,10 @@ class Functions
     }
 
 
-    public static function replaceTypeDate($data){
-
-        // Текст по которому будем искать
+    public static function replaceTypeDate($data)
+    {
         $string = $data;
-
-        // шаблон, по которому будем заменять
         $patterns = '/-/';
-
-        // на что будем заменять
         $replacements = '.';
 
         return preg_replace($patterns, $replacements, $string);

@@ -1,74 +1,5 @@
 $(document).ready(function() {
 
-	$("#annul input[type=radio], .search-form input[type=radio]").click(function(){
-		$(this).parent().trigger('click');
-		//return false;
-	});
-
-	$("#annul label.radio, .search-form label.radio").click(function(){
-		$("input[type=radio]", this).prop('checked', true);
-	});
-
-	
-/* Rpep Form */
-/*
-$("#rpep_form [name=type]").click(function(){
-	if ($(this).val()=='1') {
-		// Юр особа
-		$("#rpep_form .kod_pdv_title").html('Податковий номер');
-		$("#rpep_form .name_title").html('Найменування');
-	} else {
-		// Фіз особа
-		$("#rpep_form .kod_pdv_title").html('Серія та номер паспорта');
-		$("#rpep_form .name_title").html('ПІБ');
-	}
-});
-*/
-$(".fancybox,.slider_photos a,.photos-gallery a").fancybox();
-
-$('.main-map__container').click(function (e) {
-  $('.main-map__map').addClass('is-visiblemap');
-});
-/*
-$('#mapukraine area').mouseover(function(){
-	$('.view_hint').html($(this).attr('title'));
-}).mouseout(function(){
-	$('.view_hint').html(' ');
-});
-*/
-
-$(document).click(function(event) {
-    if ( $(event.target).closest('.main-map').get(0) == null )  {
-         $(".main-map__map").removeClass('is-visiblemap');
-    }
-});
-
-//datepicker
-// if ($('.js-dp').length > 0) {
-//   $('.js-dp').datepicker({
-//     inline: true,
-//     monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
-//     'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-//     monthNamesShort: ['Январь','Февраль','Март','Апрель','Май','Июнь',
-//     'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-//     dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
-//     dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
-//     dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
-//     weekHeader: 'Не',
-//     dateFormat: 'dd.mm.yy',
-//     firstDay: 1,
-//     isRTL: false,
-//     showMonthAfterYear: false,
-//     hideIfNoPrevNext: true,
-//     afterAdjustDate: function(){        
-      
-//     },
-//     onSelect: function() { 
-      
-//     }
-//   });
-// };  
-
 // Бегущая строка
 function tape_move () {
   // текущий сдвиг текста относительно левой границы блока бегущей строки
@@ -420,16 +351,4 @@ $(window).scroll(function() {
     $('.inner-page .header').css('margin-bottom', '0');
   }
 });
-
-// //scroll
-// $(window).scroll(function() {
-//   if ($(window).scrollTop() > 108) {
-//     $('.nav').addClass('nav_fixed');
-//     $('.header').css('margin-bottom', '35px');
-//   }
-//   else {
-//     $('.nav').removeClass('nav_fixed');
-//     $('.header').css('margin-bottom', '0');
-//   }
-// });
 

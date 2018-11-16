@@ -5,12 +5,12 @@
 
 CKEDITOR.editorConfig = function( config ) {
 
-   config.filebrowserBrowseUrl = '/template/admin/plugins/kcfinder/browse.php?opener=ckeditor&type=files';
-   config.filebrowserImageBrowseUrl = '/template/admin/plugins/kcfinder/browse.php?opener=ckeditor&type=images';
-   config.filebrowserFlashBrowseUrl = '/template/admin/plugins/kcfinder/browse.php?opener=ckeditor&type=flash';
-   config.filebrowserUploadUrl = '/template/admin/plugins/kcfinder/upload.php?opener=ckeditor&type=files';
-   config.filebrowserImageUploadUrl = '/template/admin/plugins/kcfinder/upload.php?opener=ckeditor&type=images';
-   config.filebrowserFlashUploadUrl = '/template/admin/plugins/kcfinder/upload.php?opener=ckeditor&type=flash';
+   config.filebrowserBrowseUrl = '/template/plugins/kcfinder/browse.php?opener=ckeditor&type=files';
+   config.filebrowserImageBrowseUrl = '/template/plugins/kcfinder/browse.php?opener=ckeditor&type=images';
+   config.filebrowserFlashBrowseUrl = '/template/plugins/kcfinder/browse.php?opener=ckeditor&type=flash';
+   config.filebrowserUploadUrl = '/template/plugins/kcfinder/upload.php?opener=ckeditor&type=files';
+   config.filebrowserImageUploadUrl = '/template/plugins/kcfinder/upload.php?opener=ckeditor&type=images';
+   config.filebrowserFlashUploadUrl = '/template/plugins/kcfinder/upload.php?opener=ckeditor&type=flash';
 
 	// Define changes to default configuration here.
 	// For complete reference see:
@@ -43,6 +43,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+    config.height = 400;
 
     config.indentClasses = ["ul-grey", "ul-red", "text-red", "ul-content-red", "circle", "style-none", "decimal", "paragraph-portfolio-top", "ul-portfolio-top", "url-portfolio-top", "text-grey"];
     config.protectedSource.push(/<(style)[^>]*>.*<\/style>/ig);
