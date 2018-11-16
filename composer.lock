@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "4cc42ad073f2904d2917a0b3d1b6aea6",
     "content-hash": "e9a0ae346b14258963a36b728cd6bd40",
     "packages": [
         {
@@ -63,7 +64,7 @@
                 "put",
                 "request"
             ],
-            "time": "2018-09-24T13:38:04+00:00"
+            "time": "2018-09-24 13:38:04"
         },
         {
             "name": "josantonius/session",
@@ -117,7 +118,7 @@
                 "php",
                 "session"
             ],
-            "time": "2018-05-04T08:30:19+00:00"
+            "time": "2018-05-04 08:30:19"
         },
         {
             "name": "josantonius/url",
@@ -174,7 +175,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-04-17T18:18:48+00:00"
+            "time": "2018-04-17 18:18:48"
         },
         {
             "name": "josegonzalez/dotenv",
@@ -227,7 +228,7 @@
                 "dotenv",
                 "php"
             ],
-            "time": "2017-09-19T15:49:58+00:00"
+            "time": "2017-09-19 15:49:58"
         },
         {
             "name": "m1/env",
@@ -285,7 +286,7 @@
                 "parser",
                 "support"
             ],
-            "time": "2018-06-19T18:55:08+00:00"
+            "time": "2018-06-19 18:55:08"
         },
         {
             "name": "verot/class.upload.php",
@@ -326,7 +327,7 @@
                 "gd",
                 "upload"
             ],
-            "time": "2018-10-31T20:29:58+00:00"
+            "time": "2018-10-31 20:29:58"
         }
     ],
     "packages-dev": [],

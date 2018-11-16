@@ -2,6 +2,7 @@
 .env
 .env.local
 upload/
+upload/autoload.php
 vendor/composer
 vendor/josantonius
 vendor/josegonzalez

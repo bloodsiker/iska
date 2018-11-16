@@ -4,6 +4,9 @@ namespace App\app\Controllers\admin;
 
 use App\app\Models\Media;
 use App\components\AdminBase;
+use Josantonius\Request\Request;
+use Josantonius\Url\Url;
+use upload as FileUpload;
 
 class AdminMediaController extends AdminBase
 {
@@ -14,63 +17,47 @@ class AdminMediaController extends AdminBase
      */
     public function actionPhoto()
     {
-        // Проверка доступа
         self::checkAdmin();
-
-        // Список альбомов
         $albumList = Media::getListAlbum(0);
 
-        if(isset($_POST['add_album'])){
+        if (isset($_POST['add_album'])){
             $options['title'] = $_POST['title'];
             $options['sort'] = $_POST['sort'];
 
-            //
             $id = Media::createAlbum($options);
 
-            if($id){
-
-                // Создаем на сервере папку для альбома с именем соответсвующим id альбома
-                mkdir("upload/media/photo/$id");
-                // Все загруженные файлы помещаются в эту папку
-                $name = $_FILES['image']['name'];
-                $options['path'] = "/upload/media/photo/";
-
-                // Получаем расширение файла
-                $getMime = explode('.', $name);
-                //$mime = end($getMime);
-
-                $name =  $id . "." . $getMime['1'];
-                $options['img'] = $name;
-
-                // Проверим, загружалось ли через форму изображение
-                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    // Если загружалось, переместим его в нужную папке, дадим новое имя
-                    if(move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $options['path'] . $options['img'])) {
+            if ($id && Request::files('image')) {
+                $handle = new FileUpload(Request::files('image'));
+                if ($handle->uploaded) {
+                    $handle->_mkdir("/upload/media/photo/{$id}");
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
+                    $handle->file_new_name_body = $id;
+                    $options['path'] = "/upload/media/photo/";
+                    $options['img'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+                    $handle->process(ROOT . $options['path']);
+                    if ($handle->processed) {
+                        $handle->clean();
                         Media::updateAlbumPathById($id, $options);
                     }
                 }
-
-                header("Location: " . $_SERVER['HTTP_REFERER']);
+                Url::previous();
             }
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin_media/photo/photo.php');
+        $this->render('admin_cabinet/admin_media/photo/photo', compact('albumList'));
         return true;
     }
 
 
-
     /**
      * Екшен для страници со списком фото-альбомов в админке
+     * @param $id
      * @return bool
      */
     public function actionPhotoUpdate($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        //  Информация о фото-альбоме
         $album = Media::getAlbumById($id);
 
         if(isset($_POST['update'])){
@@ -78,35 +65,24 @@ class AdminMediaController extends AdminBase
             $options['sort'] = $_POST['sort'];
             $options['archive'] = $_POST['archive'];
 
-
             if (Media::updateAlbumById($id, $options)) {
-
-                // Проверим, загружалось ли через форму изображение
-                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-
-                    // Все загруженные файлы помещаются в эту папку
-                    $name = $_FILES['image']['name'];
-                    $path = "/upload/media/photo/";
-
-                    // Получаем расширение файла
-                    $getMime = explode('.', $name);
-                    //$mime = end($getMime);
-
-                    $name = $id . "." . $getMime['1'];
-                    $options['img'] = $name;
-
-                    // Если загружалось, переместим его в нужную папке, дадим новое имя
-                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $path . $options['img']);
-
+                $handle = new FileUpload(Request::files('image'));
+                if ($handle->uploaded) {
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
+                    $handle->file_new_name_body = $id;
+                    $handle->file_overwrite = true;
+                    $options['path'] = "/upload/media/photo/";
+                    $options['img'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+                    $handle->process(ROOT . $options['path']);
+                    if ($handle->processed) {
+                        $handle->clean();
+                    }
                 }
-
-                header("Location: /admin/media/photo");
+                Url::redirect('/admin/media/photo');
             }
-
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin_media/photo/photo_update.php');
+        $this->render('admin_cabinet/admin_media/photo/photo_update', compact('album'));
         return true;
     }
 

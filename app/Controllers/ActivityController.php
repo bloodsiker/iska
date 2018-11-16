@@ -14,8 +14,7 @@ class ActivityController extends Controller
 
         $activity = Activity::getActivityById(1);
 
-
-        require_once(ROOT . '/views/activity/national-patriotic.php');
+        $this->render('activity/national-patriotic', compact('title', 'activity'));
         return true;
     }
 
@@ -25,8 +24,7 @@ class ActivityController extends Controller
 
         $activity = Activity::getActivityById(2);
 
-
-        require_once(ROOT . '/views/activity/scientific.php');
+        $this->render('activity/scientific', compact('title', 'activity'));
         return true;
     }
 

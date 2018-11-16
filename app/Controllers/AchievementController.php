@@ -17,8 +17,7 @@ class AchievementController extends Controller
 
         $categoryList = Achievement::getCategoryList();
 
-
-        require_once(ROOT . '/views/achievement/international.php');
+        $this->render('achievement/international', compact('title', 'achievement', 'categoryList'));
         return true;
     }
 
@@ -28,8 +27,7 @@ class AchievementController extends Controller
 
         $activity = Activity::getActivityById(2);
 
-
-        require_once(ROOT . '/views/achievement/personal.php');
+        $this->render('achievement/personal', compact('title', 'activity'));
         return true;
     }
 
