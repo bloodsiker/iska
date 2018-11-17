@@ -3,6 +3,7 @@
 namespace App\app\Controllers;
 
 use App\app\Models\Activity;
+use App\app\Models\Documents;
 use App\vendor\controller\Controller;
 
 class ActivityController extends Controller
@@ -24,7 +25,9 @@ class ActivityController extends Controller
 
         $activity = Activity::getActivityById(2);
 
-        $this->render('activity/scientific', compact('title', 'activity'));
+        $listDocuments = Documents::getListDocuments(Documents::TYPE_SCIENTIFIC);
+
+        $this->render('activity/scientific_doc', compact('title', 'activity', 'listDocuments'));
         return true;
     }
 

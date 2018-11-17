@@ -7,7 +7,8 @@
         "Josantonius/Request": "^1.1",
         "Josantonius/Url": "^1.1",
         "josegonzalez/dotenv": "^3.2",
-        "verot/class.upload.php": "dev-master"
+        "verot/class.upload.php": "dev-master",
+        "cocur/slugify": "^3.1"
     },
     "autoload": {
         "psr-4": {

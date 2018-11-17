@@ -6,124 +6,89 @@ use App\app\Models\Admin;
 use App\app\Models\Banner;
 use App\app\Models\Event;
 use App\components\AdminBase;
+use Josantonius\Request\Request;
 use Josantonius\Session\Session;
 use Josantonius\Url\Url;
+use upload as FileUpload;
 
 /**
- * Контроллер AdminController
- * Главная страница в админпанели
+ * Class AdminController
  */
 class AdminController extends AdminBase
 {
-    /**
-     * Action для стартовой страницы "Панель администратора"
-     */
+
+    const PATH_EVENT_UPLOAD = "/upload/events/";
+    const PATH_SLIDER_UPLOAD = "/upload/slider/";
+
     public function actionIndex()
     {
         self::checkAdmin();
 
-        $adminId = Admin::CheckLogged();
-
-        $admin = Admin::getAdminById($adminId);
         $bannersList = Banner::getBannersListAdmin();
         $eventList = Event::getListEventByAdmin();
 
-        if (isset($_POST['add_banner'])) {
-            // Если форма отправлена
-            // Получаем данные из формы
-            $name = $_FILES['image']['name'];
-            $options['status'] = $_POST['status'];
-            $options['link'] = $_POST['link'];
-            $options['sort'] = $_POST['sort'];
-            $options['text'] = $_POST['text'];
+        if (Request::post('add_banner')) {
+            $options['status'] = Request::post('status');
+            $options['link'] = Request::post('link');
+            $options['sort'] = Request::post('sort');
+            $options['text'] = Request::post('text');
+            $options['path'] = self::PATH_SLIDER_UPLOAD;
 
-
-            // Все загруженные файлы помещаются в эту папку
-            $options['path'] = "/upload/slider/";
-            $randomName = substr_replace(sha1(microtime(true)), '', 12);
-
-            // Получаем расширение файла
-            $getMime = explode('.', $name);
-            //$mime = end($getMime);
-
-            $randomName =  $randomName . "." . $getMime['1'];
-            $options['img'] = $randomName;
-
-
-            // Если ошибок нет
-            // Добавляем новый товар
-            $id = Banner::createBanner($options);
-
-            // Если запись добавлена
-            if ($id) {
-                // Проверим, загружалось ли через форму изображение
-                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    // Если загружалось, переместим его в нужную папке, дадим новое имя
-                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $options['path'] . $options['img']);
+            if (Request::files('image')) {
+                $handle = new FileUpload(Request::files('image'));
+                if ($handle->uploaded) {
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
+                    $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
+                    $handle->image_resize = true;
+                    $handle->image_x = 660;
+                    $handle->image_ratio_y = true;
+                    $options['img'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+                    $handle->process(ROOT . $options['path']);
+                    if ($handle->processed) {
+                        $handle->clean();
+                        Banner::createBanner($options);
+                    }
                 }
             }
 
             Url::previous();
         }
 
+        if (Request::post('add_event')) {
+            $options['title'] = Request::post('title');
+            $options['status'] = Request::post('status');
+            $options['path'] = self::PATH_EVENT_UPLOAD;
 
-        // Обработка формы
-        if (isset($_POST['add_event'])) {
-            // Если форма отправлена
-            // Получаем данные из формы
-            $name = $_FILES['image']['name'];
-            $options['title'] = $_POST['title'];
-            $options['status'] = $_POST['status'];
-
-            // Все загруженные файлы помещаются в эту папку
-            $options['path'] = "/upload/events/";
-            $randomName = substr_replace(sha1(microtime(true)), '', 12);
-
-            // Получаем расширение файла
-            $getMime = explode('.', $name);
-            //$mime = end($getMime);
-
-            $randomName =  $randomName . "." . $getMime['1'];
-            $options['img'] = $randomName;
-
-
-            // Флаг ошибок в форме
-            $errors = false;
-
-            if (!isset($options['title']) || empty($options['title'])) {
-                $errors[] = 'Заполните поле Название';
-            }
-
-            if ($errors == false) {
-                $id = Event::createEvent($options);
-
-                if ($id) {
-                    // Проверим, загружалось ли через форму изображение
-                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                        // Если загружалось, переместим его в нужную папке, дадим новое имя
-                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $options['path'] . $options['img']);
+            if (Request::files('image')) {
+                $handle = new FileUpload(Request::files('image'));
+                if ($handle->uploaded) {
+                    $handle->allowed = ['image/jpeg','image/jpg','image/png'];
+                    $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
+                    $handle->image_resize = true;
+                    $handle->image_x = 600;
+                    $handle->image_ratio_y = true;
+                    $options['img'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+                    $handle->process(ROOT . $options['path']);
+                    if ($handle->processed) {
+                        $handle->clean();
+                        Event::createEvent($options);
                     }
                 }
-
-                Url::previous();
             }
+            Url::previous();
         }
 
-        // Подключаем вид
-        require_once(ROOT . '/views/admin_cabinet/admin/index.php');
+        $this->render('admin_cabinet/admin/index', compact('bannersList', 'eventList'));
         return true;
     }
 
     public function actionEventUpdate($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-         $event = Event::getEventById($id);
+        $event = Event::getEventById($id);
 
         if (isset($_POST['update'])) {
-            // Если форма отправлена
-            // Получаем данные из формы
             $options['title'] = $_POST['title'];
             $options['status'] = $_POST['status'];
 
@@ -134,8 +99,6 @@ class AdminController extends AdminBase
             }
         }
 
-
-        // Подключаем вид
         require_once(ROOT . '/views/admin_cabinet/admin/update_event.php');
         return true;
     }
@@ -145,10 +108,8 @@ class AdminController extends AdminBase
      */
     public function actionEventDelete($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Удаляем евент
         Event::deleteEventById($id);
 
         Url::redirect('/admin');
@@ -161,15 +122,11 @@ class AdminController extends AdminBase
      */
     public function actionBannerDelete($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Удаляем банер
         Banner::deleteBannerById($id);
-
         Url::redirect('/admin');
 
-        // Подключаем вид
         return true;
     }
 

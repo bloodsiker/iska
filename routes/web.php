@@ -41,6 +41,7 @@ return array(
 
     // Админ панель дыіяльність
     'admin/activity/national_patriotic' => 'admin/AdminActivity@patriotic',
+    'admin/activity/scientific1' => 'admin/AdminActivity@scientific1',
     'admin/activity/scientific' => 'admin/AdminActivity@scientific',
 
     'admin/setting' => 'admin/AdminSetting@setting',

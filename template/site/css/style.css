@@ -697,8 +697,14 @@ header {
 }
 .list-position li{
     margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #f0f0f0;
 }
 .list-position li a{
+    color: #0c0c0c;
+    font-size: 14px;
 }
 .list-position li a:hover{
     text-decoration: underline;

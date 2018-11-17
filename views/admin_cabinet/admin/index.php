@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             <div class="form-group button-group clearfix">
-                                <button name="add_banner" class="btn btn-primary pull-right">Сохранить</button>
+                                <input type="submit" name="add_banner" value="Сохранить" class="btn btn-primary pull-right">
                                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                             </div>
                         </form>
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="form-group button-group clearfix">
-                                <button name="add_event" class="btn btn-primary pull-right">Сохранить</button>
+                                <input type="submit" name="add_event" value="Сохранить" class="btn btn-primary pull-right">
                                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                             </div>
                         </form>

@@ -13,7 +13,7 @@ use upload as FileUpload;
 
 class AdminFederationController extends AdminBase
 {
-    const PATH_UPLOAD = "/upload/docs/";
+    const PATH_UPLOAD = "/upload/docs/federation/";
 
     public function actionLeadership()
     {

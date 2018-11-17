@@ -27,7 +27,7 @@ class AdminUserController extends AdminBase
             Url::redirect('/admin/user');
         }
 
-        $this->render('admin_cabinet/admin_user/index', compact('title', 'users'));
+        $this->render('admin_cabinet/admin_user/index', compact('users'));
         return true;
     }
 

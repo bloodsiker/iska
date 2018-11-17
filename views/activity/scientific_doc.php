@@ -23,7 +23,6 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
 
-
     <script>
         $(document).ready(function(){
             $(".ajax").colorbox();
@@ -34,22 +33,20 @@
 </head>
 <body>
 <?php require_once ROOT . '/views/layouts/tagmanager.php'?>
-<!-- HEAD AND MENU  -->
+
 <?php require_once ROOT . '/views/layouts/menu-header.php'?>
-
-
 
 <section class="displ-slide">
     <div class="container main">
         <div class="slider-block calendar-block">
             <div class="bookmark bookmark-video">
-                <span>Регламент</span>
+                <span>Діяльність - наукова</span>
             </div>
             <div class="position">
                 <ul class="list-position">
-                    <?php if (is_array($listPosition)): ?>
-                        <?php foreach ($listPosition as $position): ?>
-                            <li><img src="/template/site/img/docs.png" width="18px" alt="docs"> <a href="<?=$position['path'] . $position['file']?>" target="_blank"><?=$position['title']?></a></li>
+                    <?php if (is_array($listDocuments)): ?>
+                        <?php foreach ($listDocuments as $document): ?>
+                            <li><img src="/template/site/img/docs.png" width="18px" alt="docs"> <a href="<?=$document['path'] . $document['file']?>" target="_blank"><?=$document['title']?></a></li>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </ul>
@@ -59,11 +56,7 @@
 
     </div>
 </section>
-
-
-
 <?php require_once ROOT . '/views/layouts/footer.php'?>
-
 </body>
 </html>
 

@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="form-group button-group">
-                            <input type="submit"name="create" value="Сохранить" class="btn btn-primary pull-right">
+                            <input type="submit" name="create" value="Сохранить" class="btn btn-primary pull-right">
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена</button>
                         </div>
                     </form>
