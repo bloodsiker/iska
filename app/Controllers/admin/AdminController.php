@@ -148,7 +148,6 @@ class AdminController extends AdminBase
                 $errors[] = 'Не верный логин';
             }
 
-            //Проверяем существует ли пользователь
             $adminId = Admin::checkAdminData($login, $password);
 
             if ($adminId == false){

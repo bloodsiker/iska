@@ -22,13 +22,9 @@ class AdminAboutController extends AdminBase
             $text = $_POST['text'];
 
             About::updateHistory(1, $text);
-
             Url::previous();
         }
 
-
-
-        // Подключаем вид
         require_once(ROOT . '/views/admin_cabinet/admin_about/history.php');
         return true;
     }
@@ -45,7 +41,6 @@ class AdminAboutController extends AdminBase
             $title = $_POST['title'];
 
             About::updateCongratulation(2, $text, $title);
-
             Url::previous();
         }
 

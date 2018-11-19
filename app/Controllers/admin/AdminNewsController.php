@@ -74,14 +74,9 @@ class AdminNewsController extends AdminBase
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
-//                        $handle->image_resize       = true;
-//                        if(($handle->image_x / $handle->image_y >= 1.3) || ($handle->image_x / $handle->image_y <= 1.8)){
-//                            $handle->image_x              = 320;
-//                            $handle->image_y              = 240;
-//                        } else {
-//                            $handle->image_x              = 320;
-//                            $handle->image_ratio_y        = true;
-//                        }
+                    $handle->image_resize       = true;
+                    $handle->image_x            = 650;
+                    $handle->image_ratio_y      = true;
                     $path = "/upload/news/" . $options['category'] . "/";
                     $imgName = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
                     $handle->process(ROOT . $path);
@@ -100,6 +95,9 @@ class AdminNewsController extends AdminBase
             if ($handle->uploaded) {
                 $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                 $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
+                $handle->image_resize       = true;
+                $handle->image_x            = 650;
+                $handle->image_ratio_y      = true;
                 $path = "/upload/news/images/";
                 $imgName = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
                 $handle->process(ROOT . $path);
@@ -116,7 +114,9 @@ class AdminNewsController extends AdminBase
     }
 
     /**
-     * Action для страницы "Удалить фото из новости"
+     * @param int $id
+     *
+     * @return bool
      */
     public function actionDeleteImgByNews($id)
     {
@@ -134,7 +134,9 @@ class AdminNewsController extends AdminBase
 
 
     /**
-     * Action для страницы "Удалить новость"
+     * @param int $id
+     *
+     * @return bool
      */
     public function actionDelete($id)
     {

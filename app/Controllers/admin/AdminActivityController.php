@@ -5,7 +5,6 @@ namespace App\app\Controllers\admin;
 use App\app\Models\Activity;
 use App\app\Models\Documents;
 use App\components\AdminBase;
-use Cocur\Slugify\Slugify;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
 use upload as FileUpload;
@@ -59,9 +58,8 @@ class AdminActivityController extends AdminBase
         $listDoc = Documents::getListDocuments(Documents::TYPE_SCIENTIFIC);
 
         if(Request::post('add_document')){
-            $slug = new Slugify();
             $options['type_doc'] = Documents::TYPE_SCIENTIFIC;
-            $options['title'] = $slug->slugify(Request::post('title'));
+            $options['title'] = Request::post('title');
             $options['path'] = self::PATH_UPLOAD;
 
             if (Request::files('file')) {

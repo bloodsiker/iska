@@ -12,7 +12,6 @@ class AdminMediaController extends AdminBase
 {
 
     /**
-     * Екшен для страници со списком фото-альбомов в админке
      * @return bool
      */
     public function actionPhoto()
@@ -93,32 +92,23 @@ class AdminMediaController extends AdminBase
         // Проверка доступа
         self::checkAdmin();
 
-        // Информация о фото-альбоме
         $album = Media::getAlbumById($id);
-
-        // Список фотографий в альбоме
         $photoList = Media::getPhotoByListAlbum($id);
 
-        // Обработка формы
         if (isset($_POST['add_photo'])) {
 
-            // Если форма отправлена
-            // Получаем данные из формы
             $name = $_FILES['image']['name'];
             $options['id_album'] = $id;
 
-            // Все загруженные файлы помещаются в эту папку
             $options['path'] = "/upload/media/photo/" . $id . "/";
             $randomName = substr_replace(sha1(microtime(true)), '', 12);
 
-            // Получаем расширение файла
             $getMime = explode('.', $name);
             //$mime = end($getMime);
 
             $randomName =  $randomName . "." . $getMime['1'];
             $options['img'] = $randomName;
 
-            // Если запись добавлена
             if ($id) {
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
@@ -129,8 +119,7 @@ class AdminMediaController extends AdminBase
                 }
             };
 
-            // Перенаправляем пользователя на страницу управлениями товарами
-            header("Location: " . $_SERVER['HTTP_REFERER']);
+            Url::previous();
         }
 
         require_once(ROOT . '/views/admin_cabinet/admin_media/photo/photo_view.php');
@@ -139,14 +128,10 @@ class AdminMediaController extends AdminBase
 
     public function actionPhotoArhive()
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Список альбомов
         $albumList = Media::getListAlbum(1);
 
-
-        // Подключаем вид
         require_once(ROOT . '/views/admin_cabinet/admin_media/photo/photo_arhive.php');
         return true;
     }
@@ -156,16 +141,11 @@ class AdminMediaController extends AdminBase
      */
     public function actionDeletePhotoAlbum($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Если форма отправлена
-        // Удаляем фото-альбом
         Media::deleteAlbumById($id);
 
-        // Перенаправляем пользователя на страницу управлениями товарами
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-
+        Url::previous();
         return true;
     }
 
@@ -174,16 +154,11 @@ class AdminMediaController extends AdminBase
      */
     public function actionDeletePhoto($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Если форма отправлена
-        // Удаляем фото
         Media::deletePhotoById($id);
 
-        // Перенаправляем пользователя на страницу управлениями товарами
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-
+        Url::previous();
         return true;
     }
 
@@ -196,10 +171,8 @@ class AdminMediaController extends AdminBase
      */
     public function actionVideo()
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Список видео
         $videoList = Media::getVideoList(0);
 
         if(isset($_POST['add_video'])){
@@ -212,7 +185,6 @@ class AdminMediaController extends AdminBase
             $id = Media::createVideo($options);
 
             if($id){
-                // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
 
@@ -234,12 +206,11 @@ class AdminMediaController extends AdminBase
                     }
                 }
 
-                header("Location: " . $_SERVER['HTTP_REFERER']);
+                Url::previous();
             }
 
         }
 
-        // Подключаем вид
         require_once(ROOT . '/views/admin_cabinet/admin_media/video/video.php');
         return true;
     }
@@ -250,10 +221,8 @@ class AdminMediaController extends AdminBase
      */
     public function actionVideoUpdate($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        //  Информация о фото-альбоме
         $video = Media::getVideoById($id);
 
         if(isset($_POST['update'])){
@@ -268,10 +237,8 @@ class AdminMediaController extends AdminBase
 
             if ($ok) {
 
-                // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
 
-                    // Все загруженные файлы помещаются в эту папку
                     $name = $_FILES['image']['name'];
                     $options['path'] = "/upload/media/video/";
 
@@ -282,14 +249,13 @@ class AdminMediaController extends AdminBase
                     $name = $id . "." . $getMime['1'];
                     $options['img'] = $name;
 
-                    // Если загружалось, переместим его в нужную папке, дадим новое имя
                     if(move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . $options['path'] . $options['img'])){
                         Media::updateVideothById($id, $options);
                     }
 
                 }
 
-                header("Location: /admin/media/video");
+                Url::redirect('/admin/media/video');
             }
 
         }
@@ -301,14 +267,10 @@ class AdminMediaController extends AdminBase
 
     public function actionVideoArhive()
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Список видео
         $videoList = Media::getVideoList(1);
 
-
-        // Подключаем вид
         require_once(ROOT . '/views/admin_cabinet/admin_media/video/video_arhive.php');
         return true;
     }
@@ -319,16 +281,11 @@ class AdminMediaController extends AdminBase
      */
     public function actionDeleteVideo($id)
     {
-        // Проверка доступа
         self::checkAdmin();
 
-        // Если форма отправлена
-        // Удаляем фото
         Media::deleteVideoById($id);
 
-        // Перенаправляем пользователя на страницу управлениями товарами
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-
+        Url::previous();
         return true;
     }
 

@@ -15,7 +15,6 @@ class AdminAchievementController extends AdminBase
 
         $categoryList = Achievement::getCategoryList();
 
-        // Обработка формы
         if (isset($_POST['add_category'])) {
             $category = $_POST['category'];
             $name = $_POST['name'];
@@ -41,7 +40,6 @@ class AdminAchievementController extends AdminBase
         self::checkAdmin();
 
         $achievement = Achievement::getAchievementById($id);
-
         $categoryList = Achievement::getCategoryList();
 
         if (isset($_POST['add_category'])) {
@@ -60,7 +58,6 @@ class AdminAchievementController extends AdminBase
             $text = $_POST['text'];
 
             Achievement::updateAchievementById($id, $title, $text);
-
             Url::previous();
         }
 
@@ -96,7 +93,6 @@ class AdminAchievementController extends AdminBase
             $text = $_POST['text'];
 
             Achievement::updateAchievementById(2, $text);
-
             Url::previous();
         }
 
