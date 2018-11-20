@@ -32,13 +32,13 @@
     </script>
 
 
-    <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/analytics.php'?>
+    <?php include_once ROOT . '/views/layouts/analytics.php'?>
 </head>
 <body>
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/tagmanager.php'?>
+<?php include_once ROOT . '/views/layouts/tagmanager.php'?>
 
 <!-- HEAD AND MENU  -->
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/menu-header.php'?>
+<?php include_once ROOT . '/views/layouts/menu-header.php'?>
 
 
 <section class="displ-slide">
@@ -68,8 +68,6 @@
                         </li>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
-
 
         </div>
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>

@@ -123,8 +123,6 @@
 
         </div>
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>
-
-        <?php require_once ROOT . '/views/layouts/articles.php'?>
     </div>
 </section>
 
