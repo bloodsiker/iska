@@ -43,11 +43,11 @@
 
                     </div>
 
-                    <a class="left keys-item-control" id="next-onnounce"  href="#recommended-item-carousel"
+                    <a class="left keys-item-control" id="prev-onnounce"  href="#recommended-item-carousel"
                        data-slide="prev">
 
                     </a>
-                    <a class="right keys-item-control" id="prev-onnounce" href="#recommended-item-carousel"
+                    <a class="right keys-item-control" id="next-onnounce" href="#recommended-item-carousel"
                        data-slide="next">
 
                     </a>

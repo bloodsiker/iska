@@ -34,11 +34,8 @@
                 </div><!-- /.box -->
             </div>
         </div><!-- /.row -->
-        <!-- Main row -->
-
 
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
 <?php require_once ROOT . '/views/layouts/footer_admin.php'?>
-

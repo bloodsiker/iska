@@ -72,7 +72,6 @@ return array(
     'admin' => 'admin/Admin@index',
 
 
-
     'news/([A-Za-z0-9-]+)/([0-9]+)' => 'News@view/$1/$2',
     'news/international' => 'News@international',
     'news/iska-pro' => 'News@iskaPro',

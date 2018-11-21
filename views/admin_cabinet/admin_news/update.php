@@ -33,7 +33,11 @@
                             <div class="form-group">
                                 <label for="date_create" class="col-sm-2 control-label">Дата создания</label>
                                 <div class="col-sm-4">
-                                    <input type="date" name="data_create" class="form-control" id="date_create" value="<?php echo $news['data_create'] ?>">
+                                    <input type="date" name="data_create" class="form-control" id="date_create" value="<?= $news['data_create'] ?>">
+                                </div>
+                                <label class="col-sm-1 control-label">Просмотры</label>
+                                <div class="col-sm-2">
+                                    <input type="text" name="views" class="form-control" readonly disabled value="<?= $news['views'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">

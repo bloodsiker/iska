@@ -44,9 +44,7 @@
 <body>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/tagmanager.php'?>
 
-<!-- HEAD AND MENU  -->
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/menu-header.php'?>
-
 
 <section class="displ-slide">
     <div class="container main">
@@ -73,29 +71,16 @@
                                     <img src="<?=$news['path'] . $news['img']?>" width="90" alt="Title #1" />
                                 </a>
                             </li>
-                            <?php if (is_array($fotoByNews)): ?>
-                                <?php foreach ($fotoByNews as $foto): ?>
+                            <?php if (is_array($photoByNews)): ?>
+                                <?php foreach ($photoByNews as $photo): ?>
                                     <li>
-                                        <a class="thumb" name="photo3" href="<?= $foto['path'] . $foto['img'] ?>"
+                                        <a class="thumb" name="photo3" href="<?= $photo['path'] . $photo['img'] ?>"
                                            title="photo">
-                                            <img src="<?= $foto['path'] . $foto['img'] ?>" width="90" alt="Title #1"/>
+                                            <img src="<?= $photo['path'] . $photo['img'] ?>" width="90" alt="Title #1"/>
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                            <!--
-                            <li>
-                                <a class="thumb" name="photo2" href="images/pic2.jpg" title="Title #2">
-                                    <img src="images/t_pic2.jpg" alt="Title #2" />
-                                </a>
-                            </li>
-                            <li>
-                                <a class="thumb" name="photo3" href="images/pic3.jpg" title="Title #3">
-                                    <img src="images/t_pic3.jpg" alt="Title #3" />
-                                </a>
-                            </li>
-
-                            -->
 
                         </ul>
                         <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
@@ -106,12 +91,12 @@
 
             <div class="news scientific">
                 <div class="news-description">
-                    <h1><?=$news['title']?></h1>
+                    <h1><?= $news['title']?></h1>
                     <hr>
                     <div class="news-breadcrumb-title" style="">
-                        <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<a href="/news/<?=$news['category']?>/"><?=\App\app\Models\News::getNameCategory($news['category'])?></a>
+                        <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<a href="/news/<?= $news['category']?>/"><?=\App\app\Models\News::getNameCategory($news['category'])?></a>
                     </div>
-                    <?=$news['text']?>
+                    <?= $news['text']?>
                 </div>
             </div>
 
@@ -119,8 +104,6 @@
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>
     </div>
 </section>
-
-
 
 <?php require_once ROOT . '/views/layouts/footer.php'?>
 

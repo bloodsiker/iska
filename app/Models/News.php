@@ -155,6 +155,25 @@ class News
     }
 
     /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public static function incViewsById($id)
+    {
+        $db = MySQL::getConnection();
+
+        $sql = "UPDATE news
+            SET
+                views = views + 1
+            WHERE id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+    }
+
+    /**
      * @param $news_id
      * @param $path
      * @param $imgName

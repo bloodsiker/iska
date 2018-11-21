@@ -51,9 +51,10 @@ class NewsController extends Controller
 
         $title = "Новини - " . $news['title'];
 
-        $fotoByNews = News::getImgNewsList($id);
+        $photoByNews = News::getImgNewsList($id);
+        News::incViewsById($id);
 
-        $this->render('news/view', compact('title', 'news', 'fotoByNews'));
+        $this->render('news/view', compact('title', 'news', 'photoByNews'));
         return true;
     }
 

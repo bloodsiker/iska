@@ -22,6 +22,7 @@
                                 <th>Заголовок</th>
                                 <th>Категория</th>
                                 <th>Статус</th>
+                                <th>Просмотры</th>
                                 <th>Дата</th>
                                 <th>Действия</th>
 
@@ -36,6 +37,7 @@
                                         <td><?php echo $news['title']?></td>
                                         <td><?= App\app\Models\News::getNameCategory($news['category'])?></td>
                                         <td><div class="<?= App\app\Models\News::getColorNews($news['status'])?>"><?= App\app\Models\News::getStatusNews($news['status'])?></div></td>
+                                        <td class="text-center"><?= $news['views'] ?></td>
                                         <td><?= App\components\Functions::replaceTypeDate($news['data_create']); ?></td>
                                         <td>
                                             <a href="/news/<?= $news['category']; ?>/<?= $news['id']; ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
