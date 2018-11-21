@@ -20,12 +20,9 @@
     <link href="/template/site/css/galleriffic.css" rel="stylesheet" type="text/css" />
     <link href="/template/site/css/main.css" rel="stylesheet" type="text/css" />
 
-
-
     <script src="/template/site/js/jquery.js"></script>
     <script src="/template/site/js/jquery.cycle2.min.js"></script>
     <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
-
 
     <script type="text/javascript" src="/template/site/js/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
@@ -37,14 +34,11 @@
 
     <script>
         $(document).ready(function () {
-            //Examples of how to assign the Colorbox event to elements
 
             $(".ajax").colorbox();
 
         });
     </script>
-
-
     <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/views/layouts/analytics.php'?>
 </head>
 <body>

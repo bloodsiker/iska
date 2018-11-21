@@ -15,37 +15,32 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $title = '';
+        $meta['description'] = 'Аматорський та професійний кікбоксинг. Збірна команда України. Міжнародні та всеукраїнські чемпіонати. Каледнар. Клуби. Новини.';
+        $meta['keywords'] = 'кікбоксинг, федерація кікбоксингу, федерація кікбоксингу ISKA, ISKA, ИСКА';
 
         $listNews = News::getLastNewsIndex();
-
         $listBanners = Banner::getBannersList();
-
         $congratulation = About::getHistory(2);
 
-        $this->render('site/index', compact('title','listNews',
-            'listBanners', 'congratulation'));
+        $this->render('site/index', compact('meta','listNews', 'listBanners', 'congratulation'));
         return true;
     }
-
 
     public function actionContact()
     {
-        $title = '- Контакти';
+        $meta['description'] = '- Контакти';
 
-        $this->render('site/contact', compact('title'));
+        $this->render('site/contact', compact('meta'));
         return true;
     }
-
 
     public function actionHistory()
     {
-        $title = '- Історія розвитку';
+        $meta['description'] = '- Історія розвитку';
 
         $history = About::getHistory(1);
 
-        $this->render('site/history', compact('title', 'history'));
+        $this->render('site/history', compact('meta', 'history'));
         return true;
     }
-
 }

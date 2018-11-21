@@ -1,39 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ISKA</title>
-    <meta name="author" content="Овсийчук Дмитрий" />
-    <meta name="description" content="Аматорський та професійний кікбоксинг. Збірна команда України. Міжнародні та всеукраїнські чемпіонати. Каледнар. Клуби. Новини. " />
-    <meta name="keywords"  content="кікбоксинг, федерація кікбоксингу, федерація кікбоксингу ISKA, ISKA, ИСКА," />
-    <meta name="Resource-type" content="Document" />
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="x-rim-auto-match" content="none">
-    <link href="/template/site/img/icon/favicon.png" rel="shortcut icon">
+<?php require_once ROOT . '/views/layouts/header.php'?>
 
-    <link rel="stylesheet" href="/template/site/css/style.css?v.1.2">
-    <link rel="stylesheet" href="/template/site/css/colorbox.css">
-    <link rel="stylesheet" href="/template/site/css/screen.css">
-    <script src="/template/site/js/jquery.js"></script>
-    <script src="/template/site/js/jquery.cycle2.min.js"></script>
-    <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
-
-    <script src="/template/site/js/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
-    <script src="/template/site/js/common.js"></script>
-    <script src="/template/site/js/lightbox.js"></script>
-
-    <script>
-        $(document).ready(function(){
-            $(".ajax").colorbox();
-            $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-        });
-    </script>
-
-    <?php require_once ROOT . '/views/layouts/analytics.php'?>
-</head>
 <body>
 <?php require_once ROOT . '/views/layouts/tagmanager.php'?>
 <!-- HEAD AND MENU  -->

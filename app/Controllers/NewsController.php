@@ -13,34 +13,34 @@ class NewsController extends Controller
 
     public function actionUkrainian()
     {
-        $title = '- Новини всеукраїнські';
+        $meta['title'] = '- Новини всеукраїнські';
         $bookmark = 'всеукраїнські новини';
 
         $newsList = News::getNewsListSite('ukrainian');
 
-        $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
         return true;
     }
 
     public function actionIskaPro()
     {
-        $title = '- Новини ISKA PRO';
+        $meta['title'] = '- Новини ISKA PRO';
         $bookmark = 'ISKA PRO';
 
         $newsList = News::getNewsListSite('iska-pro');
 
-        $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
         return true;
     }
 
     public function actionInternational()
     {
-        $title = '- Новини регіональні';
+        $meta['title'] = '- Новини регіональні';
         $bookmark = 'МІЖНАРОДНІ новини';
 
         $newsList = News::getNewsListSite('international');
 
-        $this->render('news/index', compact('title', 'bookmark', 'newsList'));
+        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
         return true;
     }
 
