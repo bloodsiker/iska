@@ -25,7 +25,7 @@ class AdminAboutController extends AdminBase
             Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_about/history.php');
+        $this->render('admin_cabinet/admin_about/history', compact('history'));
         return true;
     }
 
@@ -44,7 +44,7 @@ class AdminAboutController extends AdminBase
             Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_about/congratulation.php');
+        $this->render('admin_cabinet/admin_about/congratulation', compact('congratulation'));
         return true;
     }
 }

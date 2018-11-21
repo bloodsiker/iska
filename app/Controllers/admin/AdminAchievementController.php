@@ -25,7 +25,7 @@ class AdminAchievementController extends AdminBase
             Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_achievement/international.php');
+        $this->render('admin_cabinet/admin_achievement/international', compact('categoryList'));
         return true;
 
     }
@@ -61,7 +61,7 @@ class AdminAchievementController extends AdminBase
             Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_achievement/intern_view.php');
+        $this->render('admin_cabinet/admin_achievement/intern_view', compact('achievement', 'categoryList'));
         return true;
 
     }
@@ -90,13 +90,14 @@ class AdminAchievementController extends AdminBase
         $achievement = Achievement::getAchievementById(2);
 
         if (isset($_POST['update'])) {
+            $title =  null;
             $text = $_POST['text'];
 
-            Achievement::updateAchievementById(2, $text);
+            Achievement::updateAchievementById(2, $title, $text);
             Url::previous();
         }
 
-        require_once(ROOT . '/views/admin_cabinet/admin_achievement/personal.php');
+        $this->render('admin_cabinet/admin_achievement/personal', compact('achievement'));
         return true;
     }
 
