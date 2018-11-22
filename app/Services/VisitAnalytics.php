@@ -13,6 +13,18 @@ use App\app\Models\Visit;
 class VisitAnalytics
 {
     /**
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function getStatistics()
+    {
+//        $now = $this->getNow()->format('Y-m-d');
+
+        return Visit::getStatisticsByDateVisit();
+    }
+
+    /**
      * @throws \Exception
      */
     public function checkVisit()

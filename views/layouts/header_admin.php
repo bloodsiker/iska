@@ -58,13 +58,14 @@
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-
-                    <!-- Notifications: style can be found in dropdown.less -->
-
-                    <!-- Tasks: style can be found in dropdown.less -->
-
-                    <!-- User Account: style can be found in dropdown.less -->
+                    <li>
+                        <?php $statistic = \App\app\Models\Visit::findDateVisit(date('Y-m-d'))?>
+                        <a href="/admin/statistics" class="bg-green">
+                            Посещение
+                            <i class="fa fa-users"></i> <?= !empty($statistic) ? $statistic['uniq_visit'] : 0 ?>
+                            <i class="fa fa-eye"></i> <?= !empty($statistic) ? $statistic['views'] : 0 ?>
+                        </a>
+                    </li>
                     <li>
                         <a href="/admin/congratulation" class="bg-orange">Поздравление</a>
                     </li>

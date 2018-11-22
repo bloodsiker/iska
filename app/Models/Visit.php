@@ -11,6 +11,23 @@ class Visit
     /**
      * @param $dates
      *
+     * @return array
+     */
+    public static function getStatisticsByDateVisit()
+    {
+        $db = MySQL::getConnection();
+
+        $sql = 'SELECT * FROM visits ORDER BY dates DESC LIMIT 7';
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param $dates
+     *
      * @return mixed
      */
     public static function findDateVisit($dates)

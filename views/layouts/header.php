@@ -33,7 +33,7 @@
 <!--    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>-->
     <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
     <script type="text/javascript" src="/template/site/js/jquery.galleriffic.js"></script>
-    <script src="/template/site/js/common.js"></script>
+    <script src="/template/site/js/common.js?v.1.0.2"></script>
     <script src="/template/site/js/lightbox.js"></script>
 
     <script>

@@ -44,6 +44,8 @@ return array(
     'admin/activity/scientific1' => 'admin/AdminActivity@scientific1',
     'admin/activity/scientific' => 'admin/AdminActivity@scientific',
 
+    'admin/statistics' => 'admin/AdminStatistics@index',
+
     'admin/setting' => 'admin/AdminSetting@setting',
 
     //Админ панель О компании
