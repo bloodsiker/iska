@@ -108,6 +108,10 @@
     </footer>
 </div>
 
+<?php
+    $visit = new App\app\Services\VisitAnalytics();
+    $visit->checkVisit();
+?>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
