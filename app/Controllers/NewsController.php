@@ -4,6 +4,7 @@ namespace App\app\Controllers;
 
 use App\app\Models\News;
 use App\vendor\controller\Controller;
+use Josantonius\Request\Request;
 
 /**
  * Class NewsController
@@ -52,7 +53,10 @@ class NewsController extends Controller
         $title = "Новини - " . $news['title'];
 
         $photoByNews = News::getImgNewsList($id);
-        News::incViewsById($id);
+
+        if (strpos($_SERVER['HTTP_REFERER'], '/admin/') === false) {
+            News::incViewsById($id);
+        }
 
         $this->render('news/view', compact('title', 'news', 'photoByNews'));
         return true;

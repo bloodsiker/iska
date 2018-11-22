@@ -106,4 +106,23 @@ class Documents
         return $result->execute();
     }
 
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public static function incViewsById($id)
+    {
+        $db = MySQL::getConnection();
+
+        $sql = "UPDATE documents
+            SET
+                views = views + 1
+            WHERE id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+    }
+
 }

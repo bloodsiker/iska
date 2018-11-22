@@ -11,22 +11,26 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="x-rim-auto-match" content="none">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://<?=$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']?>">
+    <meta property="og:url" content="<?= \Josantonius\Url\Url::getCurrentPage() ?>">
     <meta property="og:title" content="<?= isset($news['title']) ? $news['title'] : null ?>">
     <meta property="og:description" content="<?= isset($news['description']) ? $news['description'] : null ?>">
-    <meta property="og:image" content="<?= isset($news['path']) ? 'http://iska.com.ua' . $news['path'] . $news['img'] : null?>" />
+    <meta property="og:image" content="<?= isset($news['path']) ? \Josantonius\Url\Url::getBaseUrl() . $news['path'] . $news['img'] : null?>" />
     <link href="/template/site/img/icon/favicon.png" rel="shortcut icon">
 
     <link rel="stylesheet" href="/template/site/css/style.css?v.1.2">
     <link rel="stylesheet" href="/template/site/css/colorbox.css">
-    <link href="/template/site/css/galleriffic.css?v1.2" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/template/site/css/galleriffic.css?v1.2" />
     <link rel="stylesheet" href="/template/site/css/screen.css">
-    <script src="/template/site/js/jquery.js"></script>
+    <link rel="stylesheet" href="/template/site/css/style-map.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!--    <script src="/template/site/js/jquery.js"></script>-->
     <script src="/template/site/js/jquery.cycle2.min.js"></script>
     <script src="/template/site/js/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="/template/site/js/main-map.js"></script>
 
 <!--    <script src="/template/site/js/jquery.min.js"></script>-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<!--    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>-->
     <script type="text/javascript" src="/template/site/js/jquery.colorbox.js"></script>
     <script type="text/javascript" src="/template/site/js/jquery.galleriffic.js"></script>
     <script src="/template/site/js/common.js"></script>

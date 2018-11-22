@@ -23,6 +23,7 @@
                             <tr class="bg-gray">
                                 <th width="50px">ID</th>
                                 <th>Название</th>
+                                <th width="100px">Просмотров</th>
                                 <th width="150px">Создан</th>
                                 <th width="50px"></th>
                                 <th width="50px"></th>
@@ -34,6 +35,7 @@
                                     <tr>
                                         <td><?=$doc['id']; ?></td>
                                         <td><a href="<?= $doc['path'] . $doc['file']?>" target="_blank"><?= $doc['title'] ?></a></td>
+                                        <td class="text-center"><?= $doc['views'] ?></td>
                                         <td><?= $doc['created_at'] ?></td>
                                         <td>
                                             <a data-position="<?=$doc['id']; ?>" class="update-position" data-toggle="modal" data-target=".modal_update_position"><i

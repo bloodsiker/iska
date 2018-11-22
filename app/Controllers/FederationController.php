@@ -23,7 +23,7 @@ class FederationController extends Controller
 
     public function actionRepresentative()
     {
-        $title = ' - Представники в регіонах';
+        $meta['title'] = '- Представники в регіонах';
         $regions = Representative::getAllRegions();
 
         $regions = array_map(function ($value) {
@@ -33,7 +33,7 @@ class FederationController extends Controller
             return $value;
         }, $regions);
 
-        $this->render('federation/representative', compact('title', 'regions'));
+        $this->render('federation/representative', compact('meta', 'regions'));
         return true;
     }
 
@@ -59,13 +59,12 @@ class FederationController extends Controller
 
     public function actionPosition()
     {
-        $title = ' - ПОЛОЖЕННЯ ПРО ПРОВЕДЕННЯ ЧЕМПІОНАТУ УКРАЇНИ З КІКБОКСИНГУ ISKA';
+        $meta['title'] = '- ПОЛОЖЕННЯ ПРО ПРОВЕДЕННЯ ЧЕМПІОНАТУ УКРАЇНИ З КІКБОКСИНГУ ISKA';
 
         $federation = Federation::getActivityById(4);
-
         $listPosition = Documents::getListDocuments(Documents::TYPE_POSITION);
 
-        $this->render('federation/position', compact('title', 'federation', 'listPosition'));
+        $this->render('federation/position', compact('meta', 'federation', 'listPosition'));
         return true;
     }
 

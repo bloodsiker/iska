@@ -41,21 +41,17 @@
 <!-- HEAD AND MENU  -->
 <?php require_once ROOT . '/views/layouts/menu-header.php'?>
 
-
-
 <section class="displ-slide">
     <div class="container main">
         <div class="slider-block calendar-block">
             <div class="calendar">
-                <?=$federation['text']?>
+                <?= $federation['text']?>
             </div>
         </div>
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>
 
     </div>
 </section>
-
-
 
 <?php require_once ROOT . '/views/layouts/footer.php'?>
 

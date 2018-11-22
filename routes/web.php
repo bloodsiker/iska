@@ -93,6 +93,9 @@ return array(
     'activity/national_patriotic' => 'Activity@nacPatriotic',
     'activity/scientific' => 'Activity@scientific',
 
+    // Ajax
+    'ajax/inc_view_doc' => 'Ajax@incViewDocument',
+
     // Федерація
     'federation/rules' => 'Federation@rules',
     'federation/calendar_2016' => 'Federation@calendar',
