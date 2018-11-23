@@ -74,31 +74,32 @@ class Visit
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO visits_ip '
-            . '(dates, ip)'
+            . '(dates, ip, ip2long)'
             . 'VALUES '
-            . '(:dates, :ip)';
+            . '(:dates, :ip, :ip2long)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':dates', $options['dates'], PDO::PARAM_STR);
         $result->bindParam(':ip', $options['ip'], PDO::PARAM_STR);
+        $result->bindParam(':ip2long', $options['ip2long'], PDO::PARAM_INT);
         return $result->execute();
     }
 
     /**
      * @param string $dates
-     * @param int    $ip
+     * @param int    $ip2long
      *
      * @return mixed
      */
-    public static function findIpClientDateVisit($dates, $ip)
+    public static function findIpClientDateVisit($dates, $ip2long)
     {
         $db = MySQL::getConnection();
 
-        $sql = 'SELECT * FROM visits_ip WHERE dates = :dates AND ip = :ip LIMIT 1';
+        $sql = 'SELECT * FROM visits_ip WHERE dates = :dates AND ip2long = :ip2long LIMIT 1';
 
         $result = $db->prepare($sql);
         $result->bindParam(':dates', $dates, PDO::PARAM_STR);
-        $result->bindParam(':ip', $ip, PDO::PARAM_INT);
+        $result->bindParam(':ip2long', $ip2long, PDO::PARAM_INT);
         $result->execute();
 
         return $result->fetch(PDO::FETCH_ASSOC);

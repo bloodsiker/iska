@@ -32,6 +32,7 @@ class VisitAnalytics
         $now = $this->getNow()->format('Y-m-d');
         $clientIp = $this->getIp();
         $options['dates'] = $now;
+        $options['ip2long'] = ip2long($clientIp);
         $options['ip'] = $clientIp;
 
         if (!Visit::findDateVisit($now)) {
@@ -40,7 +41,7 @@ class VisitAnalytics
             Visit::addDateVisit($options);
             Visit::addDateVisitIp($options);
         } else {
-            $checkIp = Visit::findIpClientDateVisit($now, $clientIp);
+            $checkIp = Visit::findIpClientDateVisit($now, $options['ip2long']);
             if (!$checkIp) {
                 Visit::incViewsAndUniqVisit($now);
                 Visit::addDateVisitIp($options);
@@ -66,7 +67,7 @@ class VisitAnalytics
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
-        return ip2long($ip);
+        return $ip;
     }
 
     /**
