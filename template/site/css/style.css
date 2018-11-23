@@ -552,7 +552,8 @@ header {
     padding-left: 24px;
 }
 .news-list li {
-    border: 1px solid #ddd;
+    border: 1px solid #e2e2e2;
+    background: #f0f0f0;
     border-radius: 4px;
     padding: 10px;
     margin-right: 23px;
@@ -562,10 +563,11 @@ header {
     margin-bottom: 5px;
 }
 .news__title a {
-    color: #501c80;
+    color: #0c0c0c;
 }
 .news__title a:hover {
     text-decoration: underline;
+    color: #501c80;
 }
 .news__content time {
     font-size: 12px;

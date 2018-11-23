@@ -17,7 +17,7 @@
     <meta property="og:image" content="<?= isset($news['path']) ? \Josantonius\Url\Url::getBaseUrl() . $news['path'] . $news['img'] : null?>" />
     <link href="/template/site/img/icon/favicon.png" rel="shortcut icon">
 
-    <link rel="stylesheet" href="/template/site/css/style.css?v.1.2">
+    <link rel="stylesheet" href="/template/site/css/style.css?v.1.3">
     <link rel="stylesheet" href="/template/site/css/colorbox.css">
     <link rel="stylesheet" href="/template/site/css/galleriffic.css?v1.2" />
     <link rel="stylesheet" href="/template/site/css/screen.css">
