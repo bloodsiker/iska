@@ -24,7 +24,9 @@
                                 <th>Статус</th>
                                 <th>Просмотры</th>
                                 <th>Дата</th>
-                                <th>Действия</th>
+                                <th width="20px"></th>
+                                <th width="20px"></th>
+                                <th width="20px"></th>
 
                             </tr>
                             </thead>
@@ -39,15 +41,17 @@
                                         <td><div class="<?= App\app\Models\News::getColorNews($news['status'])?>"><?= App\app\Models\News::getStatusNews($news['status'])?></div></td>
                                         <td class="text-center"><?= $news['views'] ?></td>
                                         <td><?= App\components\Functions::replaceTypeDate($news['data_create']); ?></td>
-                                        <td>
-                                            <a href="/news/<?= $news['category']; ?>/<?= $news['id']; ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
+                                        <td class="text-center">
+                                            <a href="/news/<?= $news['category']; ?>/<?= $news['id'].'-'.$news['slug'] ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
                                                 <i class="fa fa-eye"></i>
                                             </a>
-                                            &nbsp;
+                                        </td>
+                                        <td class="text-center">
                                             <a href="/admin/news/update/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Редактировать">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
-                                            &nbsp;
+                                        </td>
+                                        <td class="text-center">
                                             <a href="/admin/news/delete/<?php echo $news['id']; ?>" data-toggle="tooltip" title="Удалить">
                                                 <i class="glyphicon glyphicon-trash delete"></i>
                                             </a>

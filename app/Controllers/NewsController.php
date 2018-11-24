@@ -3,8 +3,8 @@
 namespace App\app\Controllers;
 
 use App\app\Models\News;
+use App\components\Pagination;
 use App\vendor\controller\Controller;
-use Josantonius\Request\Request;
 
 /**
  * Class NewsController
@@ -12,54 +12,50 @@ use Josantonius\Request\Request;
 class NewsController extends Controller
 {
 
-    public function actionUkrainian()
+    /**
+     * @param $category
+     * @param int $page
+     *
+     * @return bool
+     */
+    public function actionList($category, $page = 1)
     {
-        $meta['title'] = '- Новини всеукраїнські';
-        $bookmark = 'всеукраїнські новини';
+        if ($category === 'ukrainian') {
+            $meta['title'] = '- Новини всеукраїнські';
+            $bookmark = 'всеукраїнські новини';
+        } elseif ($category === 'iska-pro') {
+            $meta['title'] = '- Новини ISKA PRO';
+            $bookmark = 'ISKA PRO';
+        } elseif ($category === 'international') {
+            $meta['title'] = '- Новини регіональні';
+            $bookmark = 'МІЖНАРОДНІ новини';
+        }
 
-        $newsList = News::getNewsListSite('ukrainian');
+        $newsList = News::getNewsListSite($category, $page);
 
-        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
+        $totalCount = News::getCountNewsByCategory($category);
+
+        $pagination = new Pagination($totalCount, $page, News::SHOW_BY_DEFAULT);
+
+        $this->render('news/index', compact('meta', 'pagination', 'bookmark', 'newsList'));
         return true;
     }
 
-    public function actionIskaPro()
+    public function actionView($category, $slug)
     {
-        $meta['title'] = '- Новини ISKA PRO';
-        $bookmark = 'ISKA PRO';
-
-        $newsList = News::getNewsListSite('iska-pro');
-
-        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
-        return true;
-    }
-
-    public function actionInternational()
-    {
-        $meta['title'] = '- Новини регіональні';
-        $bookmark = 'МІЖНАРОДНІ новини';
-
-        $newsList = News::getNewsListSite('international');
-
-        $this->render('news/index', compact('meta', 'bookmark', 'newsList'));
-        return true;
-    }
-
-
-    public function actionView($category = true, $id)
-    {
+        $explode = explode('-', $slug);
+        $id = reset($explode);
         $news = News::getNewsById($id);
 
         $title = "Новини - " . $news['title'];
 
         $photoByNews = News::getImgNewsList($id);
 
-        if (strpos($_SERVER['HTTP_REFERER'], '/admin/') === false) {
+        if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], '/admin/') === false) {
             News::incViewsById($id);
         }
 
         $this->render('news/view', compact('title', 'news', 'photoByNews'));
         return true;
     }
-
 }

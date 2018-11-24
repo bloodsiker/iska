@@ -92,10 +92,12 @@ if(!function_exists('config')){
     }
 }
 
-function dd($d){
+function dd($d, $die = false){
     echo "<pre>";
     print_r($d);
     echo "</pre>";
-    die;
+    if ($die) {
+        die;
+    }
 }
 

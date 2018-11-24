@@ -19,10 +19,10 @@
 
                             <div class="news__content">
                                 <div class="new__pic">
-                                    <a href="/news/<?=$news['category']?>/<?=$news['id']?>"><img src="<?=$news['path'] . $news['img']?>" width="180px" alt="iska"></a>
+                                    <a href="/news/<?=$news['category']?>/<?=$news['id'].'-'.$news['slug'] ?>"><img src="<?=$news['path'] . $news['img']?>" width="180px" alt="iska"></a>
                                 </div>
                                 <div class="news__title">
-                                    <a href="/news/<?=$news['category']?>/<?=$news['id']?>"><?=$news['title']?></a>
+                                    <a href="/news/<?=$news['category']?>/<?=$news['id'].'-'.$news['slug'] ?>"><?=$news['title']?></a>
                                 </div>
                                 <time><?= \App\components\Functions::replaceTypeDate($news['data_create'])?></time>
                                 <p><?=$news['description']?></p>
@@ -32,6 +32,12 @@
                         </li>
                     <?php endforeach; ?>
                 <?php endif; ?>
+
+            </ul>
+
+            <div class="pagination-container">
+                <?= $pagination->get(); ?>
+            </div>
 
         </div>
 

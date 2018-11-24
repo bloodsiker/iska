@@ -74,10 +74,9 @@ return array(
     'admin' => 'admin/Admin@index',
 
 
-    'news/([A-Za-z0-9-]+)/([0-9]+)' => 'News@view/$1/$2',
-    'news/international' => 'News@international',
-    'news/iska-pro' => 'News@iskaPro',
-    'news/ukrainian' => 'News@ukrainian',
+    'news/([a-z-]+)/p([0-9]+)' => 'News@list/$1/$2',
+    'news/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)' => 'News@view/$1/$2',
+    'news/([a-z-]+)' => 'News@list/$1',
 
     // Медиа
     'media/photo-album' => 'Media@photoAlbum',

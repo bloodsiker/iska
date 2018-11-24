@@ -8,6 +8,8 @@ use PDO;
 class News
 {
 
+    const SHOW_BY_DEFAULT = 10;
+
     /**
      * @return array
      */
@@ -36,20 +38,46 @@ class News
     }
 
     /**
-     * @param $category
+     * @param string $category
+     * @param int $page
      *
      * @return array
      */
-    public static function getNewsListSite($category)
+    public static function getNewsListSite($category, $page = 1)
+    {
+        $limit = self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+        $db = MySQL::getConnection();
+
+        $sql = "SELECT * FROM news 
+                WHERE category = :category 
+                AND status = '1' 
+                ORDER BY id DESC 
+                LIMIT :limit OFFSET :offset";
+        $result = $db->prepare($sql);
+        $result->bindParam(':category', $category, PDO::PARAM_STR);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param $category
+     *
+     * @return mixed
+     */
+    public static function getCountNewsByCategory($category)
     {
         $db = MySQL::getConnection();
 
-        $sql = "SELECT * FROM news WHERE category = :category AND status = '1' ORDER BY id DESC";
+        $sql = "SELECT count(id) as count FROM news WHERE category = :category AND status = '1' ORDER BY id DESC";
         $result = $db->prepare($sql);
         $result->bindParam(':category', $category, PDO::PARAM_STR);
         $result->execute();
-        return $result->fetchAll(PDO::FETCH_ASSOC);
-
+        $count = $result->fetch(PDO::FETCH_ASSOC);
+        return $count['count'];
     }
 
 
@@ -81,13 +109,14 @@ class News
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO news '
-            . '(category, title, description, text, status, data_create)'
+            . '(category, slug, title, description, text, status, data_create)'
             . 'VALUES '
-            . '(:category, :title, :description, :text, :status, :data_create)';
+            . '(:category, :slug, :title, :description, :text, :status, :data_create)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':category', $options['category'], PDO::PARAM_STR);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
+        $result->bindParam(':slug', $options['slug'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':text', $options['text'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
@@ -347,6 +376,4 @@ class News
                 break;
         }
     }
-
-    
 }

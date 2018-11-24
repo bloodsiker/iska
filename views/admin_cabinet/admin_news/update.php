@@ -20,15 +20,6 @@
 
                     <div class="form-update-product">
 
-
-                        <?php if (isset($errors) && is_array($errors)): ?>
-                            <ul>
-                                <?php foreach ($errors as $error): ?>
-                                    <li> - <?php echo $error; ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-
                         <form class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="date_create" class="col-sm-2 control-label">Дата создания</label>
@@ -73,14 +64,21 @@
                                 <label for="title" class="col-sm-2 control-label">Заголовок</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="title" class="form-control" id="title"
-                                           value="<?php echo $news['title'] ?>">
+                                           value="<?= $news['title'] ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="slug" class="col-sm-2 control-label">Slug</label>
+                                <div class="col-sm-9">
+                                    <input type="text" readonly name="slug" class="form-control" id="slug"
+                                           value="<?= $news['slug'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="sort" class="col-sm-2 control-label">Лид</label>
                                 <div class="col-sm-9">
                                     <textarea name="description" style="width: 100%"
-                                              rows="3"><?php echo $news['description'] ?></textarea>
+                                              rows="3"><?= $news['description'] ?></textarea>
                                 </div>
                             </div>
 
@@ -164,8 +162,6 @@
                 </div><!-- /.box -->
             </div>
         </div><!-- /.row -->
-        <!-- Main row -->
-
 
     </section>
 </div>
