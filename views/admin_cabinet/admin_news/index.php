@@ -37,12 +37,12 @@
                                         <td width="120"><img width="120" src="<?php echo $news['path'] . $news['img']?>" alt=""></td>
                                         <td><?php echo $news['id']?></td>
                                         <td><?php echo $news['title']?></td>
-                                        <td><?= App\app\Models\News::getNameCategory($news['category'])?></td>
+                                        <td><?= $news['category']?></td>
                                         <td><div class="<?= App\app\Models\News::getColorNews($news['status'])?>"><?= App\app\Models\News::getStatusNews($news['status'])?></div></td>
                                         <td class="text-center"><?= $news['views'] ?></td>
                                         <td><?= App\components\Functions::replaceTypeDate($news['data_create']); ?></td>
                                         <td class="text-center">
-                                            <a href="/news/<?= $news['category']; ?>/<?= $news['id'].'-'.$news['slug'] ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
+                                            <a href="/news/<?= $news['category_slug']; ?>/<?= $news['id'].'-'.$news['slug'] ?>" target="_blank" data-toggle="tooltip" title="Посмотреть на сайте">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
@@ -98,10 +98,10 @@
                         <div class="form-group">
                             <label for="name_cat" class="col-sm-3 control-label">Категория</label>
                             <div class="col-sm-4">
-                                <select name="category" class="form-control">
-                                    <option value="ukrainian">Всеукраїнські</option>
-                                    <option value="iska-pro">ISKA PRO</option>
-                                    <option value="international">Міжнародні</option>
+                                <select name="category_id" class="form-control">
+                                    <?php foreach($categoryList as $cat): ?>
+                                        <option value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>

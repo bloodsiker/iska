@@ -62,10 +62,11 @@
                                     <a href="/news/<?=$news['category']?>/<?=$news['id']?>">Читати повністю</a>
                                 </div>
                                 <div class="news-breadcrumb">
-                                    <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<span><?= \App\app\Models\News::getNameCategory($news['category'])?></span>
+                                    <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;
+                                    <a href="/news/<?= $news['category_slug']?>"><?= $news['category']?></a>
                                 </div>
                                 <div class="new-title">
-                                    <h2><a href="/news/<?=$news['category']?>/<?=$news['id']?>"><?=$news['title']?></a></h2>
+                                    <h2><a href="/news/<?=$news['category_slug']?>/<?=$news['id']?>"><?=$news['title']?></a></h2>
                                 </div>
                             </div>
                         <?php endforeach; ?>

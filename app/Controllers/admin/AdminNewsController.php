@@ -3,6 +3,7 @@
 namespace App\app\Controllers\admin;
 
 use App\app\Models\News;
+use App\app\Models\NewsCategory;
 use App\components\AdminBase;
 use Cocur\Slugify\Slugify;
 use Josantonius\Request\Request;
@@ -17,10 +18,11 @@ class AdminNewsController extends AdminBase
         self::checkAdmin();
 
         $newsList = News::getNewsListAdmin();
+        $categoryList = NewsCategory::getCategoryListSite();
 
         if (Request::post('create')) {
             $slugify = new Slugify();
-            $options['category'] = Request::post('category');
+            $options['category_id'] = Request::post('category_id');
             $options['title'] = Request::post('title');
             $options['slug'] = $slugify->slugify($options['title']);
             $options['description'] = Request::post('description');
@@ -47,7 +49,7 @@ class AdminNewsController extends AdminBase
             Url::redirect('/admin/news');
         }
 
-        $this->render('admin_cabinet/admin_news/index', compact('newsList'));
+        $this->render('admin_cabinet/admin_news/index', compact('newsList', 'categoryList'));
         return true;
     }
 
@@ -63,9 +65,10 @@ class AdminNewsController extends AdminBase
 
         $news = News::getNewsById($id);
         $imgListNews = News::getImgNewsList($id);
+        $categoryList = NewsCategory::getCategoryListSite();
 
         if (Request::post('update')) {
-            $options['category'] = Request::post('category');
+            $options['category_id'] = Request::post('category_id');
             $options['title'] = Request::post('title');
             $options['description'] = Request::post('description');
             $options['text'] = Request::post('text');
@@ -112,7 +115,7 @@ class AdminNewsController extends AdminBase
             Url::previous();
         }
 
-        $this->render('admin_cabinet/admin_news/update', compact('news', 'imgListNews'));
+        $this->render('admin_cabinet/admin_news/update', compact('news', 'imgListNews', 'categoryList'));
         return true;
     }
 

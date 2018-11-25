@@ -17,7 +17,15 @@ class News
     {
         $db = MySQL::getConnection();
 
-        $sql = "SELECT * FROM news WHERE status = '1' ORDER BY id DESC LIMIT 4";
+        $sql = "SELECT 
+                    news.*,
+                    nc.name as category,
+                    nc.slug as category_slug
+                FROM news 
+                    INNER JOIN news_category nc
+                    ON news.category_id = nc.id
+                WHERE status = '1' 
+                ORDER BY news.id DESC LIMIT 4";
 
         $result = $db->prepare($sql);
         $result->execute();
@@ -31,7 +39,14 @@ class News
     {
         $db = MySQL::getConnection();
 
-        $sql = "SELECT * FROM news ORDER BY id DESC";
+        $sql = "SELECT 
+                    news.*,
+                    nc.name as category,
+                    nc.slug as category_slug
+                FROM news 
+                    INNER JOIN news_category nc
+                    ON news.category_id = nc.id
+                ORDER BY news.id DESC";
         $result = $db->prepare($sql);
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
@@ -50,13 +65,19 @@ class News
 
         $db = MySQL::getConnection();
 
-        $sql = "SELECT * FROM news 
-                WHERE category = :category 
-                AND status = '1' 
-                ORDER BY id DESC 
+        $sql = "SELECT   
+                    news.*,
+                    nc.name as category,
+                    nc.slug as category_slug
+                FROM news 
+                    INNER JOIN news_category nc
+                    ON news.category_id = nc.id
+                WHERE news.category_id = :category_id
+                AND news.status = '1' 
+                ORDER BY news.id DESC 
                 LIMIT :limit OFFSET :offset";
         $result = $db->prepare($sql);
-        $result->bindParam(':category', $category, PDO::PARAM_STR);
+        $result->bindParam(':category_id', $category, PDO::PARAM_INT);
         $result->bindParam(':limit', $limit, PDO::PARAM_INT);
         $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         $result->execute();
@@ -72,9 +93,9 @@ class News
     {
         $db = MySQL::getConnection();
 
-        $sql = "SELECT count(id) as count FROM news WHERE category = :category AND status = '1' ORDER BY id DESC";
+        $sql = "SELECT count(id) as count FROM news WHERE category_id = :category AND status = '1' ORDER BY id DESC";
         $result = $db->prepare($sql);
-        $result->bindParam(':category', $category, PDO::PARAM_STR);
+        $result->bindParam(':category', $category, PDO::PARAM_INT);
         $result->execute();
         $count = $result->fetch(PDO::FETCH_ASSOC);
         return $count['count'];
@@ -90,7 +111,14 @@ class News
     {
         $db = MySQL::getConnection();
 
-        $sql = 'SELECT * FROM news WHERE id = :id';
+        $sql = 'SELECT 
+                    news.*,
+                    nc.name as category,
+                    nc.slug as category_slug
+                FROM news 
+                    INNER JOIN news_category nc
+                    ON news.category_id = nc.id
+                WHERE news.id = :id';
 
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
@@ -109,12 +137,12 @@ class News
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO news '
-            . '(category, slug, title, description, text, status, data_create)'
+            . '(category_id, slug, title, description, text, status, data_create)'
             . 'VALUES '
-            . '(:category, :slug, :title, :description, :text, :status, :data_create)';
+            . '(:category_id, :slug, :title, :description, :text, :status, :data_create)';
 
         $result = $db->prepare($sql);
-        $result->bindParam(':category', $options['category'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
         $result->bindParam(':slug', $options['slug'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
@@ -140,7 +168,7 @@ class News
 
         $sql = "UPDATE news
             SET
-                category = :category,
+                category_id = :category_id,
                 title = :title,
                 description = :description,
                 text = :text,
@@ -150,7 +178,7 @@ class News
 
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':category', $options['category'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':text', $options['text'], PDO::PARAM_STR);
@@ -357,23 +385,4 @@ class News
         }
     }
 
-    /**
-     * @param $status
-     *
-     * @return string
-     */
-    public static function getNameCategory($status)
-    {
-        switch ($status) {
-            case 'ukrainian':
-                return 'Всеукраїнські';
-                break;
-            case 'iska-pro':
-                return 'ISKA PRO';
-                break;
-            case 'international':
-                return 'Міжнародні';
-                break;
-        }
-    }
 }

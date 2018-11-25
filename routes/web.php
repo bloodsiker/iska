@@ -4,6 +4,9 @@ return array(
 
 
     // Админ панель новости
+    'admin/news/category/update/([0-9]+)' => 'admin/AdminNewsCategory@update/$1',
+    'admin/news/category' => 'admin/AdminNewsCategory@index',
+
     'admin/news/img-delete/([0-9]+)' => 'admin/AdminNews@deleteImgByNews/$1',
     'admin/news/delete/([0-9]+)' => 'admin/AdminNews@delete/$1',
     'admin/news/update/([0-9]+)' => 'admin/AdminNews@update/$1',

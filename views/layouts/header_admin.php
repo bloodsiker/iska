@@ -190,12 +190,23 @@
                     </ul>
                 </li>
 
-                <li class="<?= App\components\Url::IsActive('/admin/news')?> treeview">
+                <li class="<?= App\components\Url::IsActive(['/admin/news', '/admin/news/category'])?> treeview">
                     <a href="/admin/news">
-                        <i class="fa fa-file-text-o"></i> <span>Новини</span>
+                        <i class="fa fa-th"></i> <span>Новини</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li class="<?= App\components\Url::IsActive('/admin/news') ?> treeview">
+                            <a href="/admin/news">
+                                <i class="fa fa-file-text-o"></i> <span>Новини</span>
+                            </a>
+                        </li>
+                        <li class="<?= App\components\Url::IsActive('/admin/news/category') ?> treeview">
+                            <a href="/admin/news/category">
+                                <i class="fa fa-th"></i> <span>Категории</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
 
                 <li class="<?= App\components\Url::IsActive([
                         '/admin/media/photo',

@@ -94,7 +94,7 @@
                     <h1><?= $news['title']?></h1>
                     <hr>
                     <div class="news-breadcrumb-title" style="">
-                        <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<a href="/news/<?= $news['category']?>/"><?=\App\app\Models\News::getNameCategory($news['category'])?></a>
+                        <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;<a href="/news/<?= $news['category_slug']?>"><?= $news['category']?></a>
                     </div>
                     <?= $news['text']?>
                 </div>

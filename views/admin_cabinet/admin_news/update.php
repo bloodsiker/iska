@@ -47,16 +47,10 @@
                             <div class="form-group">
                                 <label for="name_cat" class="col-sm-2 control-label">Категория</label>
                                 <div class="col-sm-4">
-                                    <select name="category" class="form-control">
-                                        <option <?php if ($news['category'] == 'ukrainian') echo ' selected="selected"'; ?>
-                                            value="ukrainian">Всеукраїнські
-                                        </option>
-                                        <option <?php if ($news['category'] == 'iska-pro') echo ' selected="selected"'; ?>
-                                            value="iska-pro">ISKA PRO
-                                        </option>
-                                        <option <?php if ($news['category'] == 'international') echo ' selected="selected"'; ?>
-                                            value="international">Міжнародні
-                                        </option>
+                                    <select name="category_id" class="form-control">
+                                        <?php foreach($categoryList as $cat): ?>
+                                            <option <?php if ($news['category_id'] == $cat['id']) echo ' selected="selected"'; ?> value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

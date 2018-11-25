@@ -3,6 +3,7 @@
 namespace App\app\Controllers;
 
 use App\app\Models\News;
+use App\app\Models\NewsCategory;
 use App\components\Pagination;
 use App\vendor\controller\Controller;
 
@@ -20,24 +21,17 @@ class NewsController extends Controller
      */
     public function actionList($category, $page = 1)
     {
-        if ($category === 'ukrainian') {
-            $meta['title'] = '- Новини всеукраїнські';
-            $bookmark = 'всеукраїнські новини';
-        } elseif ($category === 'iska-pro') {
-            $meta['title'] = '- Новини ISKA PRO';
-            $bookmark = 'ISKA PRO';
-        } elseif ($category === 'international') {
-            $meta['title'] = '- Новини регіональні';
-            $bookmark = 'МІЖНАРОДНІ новини';
-        }
+        $newsCategory = NewsCategory::getCategoryBy('slug', $category);
 
-        $newsList = News::getNewsListSite($category, $page);
+        $meta['title'] = '- Новини '.$newsCategory['name'];
 
-        $totalCount = News::getCountNewsByCategory($category);
+        $newsList = News::getNewsListSite($newsCategory['id'], $page);
+
+        $totalCount = News::getCountNewsByCategory($newsCategory['id']);
 
         $pagination = new Pagination($totalCount, $page, News::SHOW_BY_DEFAULT);
 
-        $this->render('news/index', compact('meta', 'pagination', 'bookmark', 'newsList'));
+        $this->render('news/index', compact('meta', 'newsCategory', 'pagination', 'newsList'));
         return true;
     }
 
@@ -47,7 +41,7 @@ class NewsController extends Controller
         $id = reset($explode);
         $news = News::getNewsById($id);
 
-        $title = "Новини - " . $news['title'];
+        $title = $news['title'];
 
         $photoByNews = News::getImgNewsList($id);
 
