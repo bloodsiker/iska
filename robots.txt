@@ -1,3 +1,8 @@
 User-agent: *
 Disallow:
 Host: iska.com.ua
+
+Sitemap: httр://iska.com.ua/sitemap.xml
+
+Disallow /upload/docs/
+Disallow /upload/news/images/
