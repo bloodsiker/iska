@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="/template/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Morris charts -->
+    <link rel="stylesheet" href="/template/plugins/morris/morris.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/template/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="/template/dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
     <link rel="stylesheet" href="/template/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/template/plugins/iCheck/flat/blue.css">
