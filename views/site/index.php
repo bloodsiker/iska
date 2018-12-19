@@ -59,14 +59,14 @@
                                         <?= \App\components\Functions::replaceNameMonths(\App\components\Functions::cropMonth($news['data_create']))?></div>
                                     <img src="<?=$news['path'] . $news['img']?>" width="320"
                                          alt="<?=$news['title']?>">
-                                    <a href="/news/<?=$news['category']?>/<?=$news['id']?>">Читати повністю</a>
+                                    <a href="/news/<?=$news['category_slug']?>/<?=$news['id'].'-'.$news['slug'] ?>">Читати повністю</a>
                                 </div>
                                 <div class="news-breadcrumb">
                                     <span><strong class="color-purpl">НОВИНИ</strong></span>&nbsp;&nbsp;&nbsp;
                                     <a href="/news/<?= $news['category_slug']?>"><?= $news['category']?></a>
                                 </div>
                                 <div class="new-title">
-                                    <h2><a href="/news/<?=$news['category_slug']?>/<?=$news['id']?>"><?=$news['title']?></a></h2>
+                                    <h2><a href="/news/<?=$news['category_slug']?>/<?=$news['id'].'-'.$news['slug'] ?>"><?=$news['title']?></a></h2>
                                 </div>
                             </div>
                         <?php endforeach; ?>
