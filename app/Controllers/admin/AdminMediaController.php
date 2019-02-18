@@ -4,6 +4,7 @@ namespace App\app\Controllers\admin;
 
 use App\app\Models\Media;
 use App\components\AdminBase;
+use App\components\Functions;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
 use upload as FileUpload;
