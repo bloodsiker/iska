@@ -58,8 +58,8 @@
 
         <div class="sidebar">
             <ul>
-                <?php if (is_array($categoryList)): ?>
-                    <?php foreach ($categoryList as $category): ?>
+                <?php if (is_array($achievementCategory)): ?>
+                    <?php foreach ($achievementCategory as $category): ?>
                         <li>
                             <a class="<?= App\components\Url::isActive("/achievement/international/{$category['alias']}", 'sidebar-active')?>"
                                href="/achievement/international/<?=$category['alias']?>"><?=$category['title']?></a></li>

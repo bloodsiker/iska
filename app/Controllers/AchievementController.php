@@ -15,9 +15,9 @@ class AchievementController extends Controller
 
         $achievement = Achievement::getAchievementByAlias($category);
 
-        $categoryList = Achievement::getCategoryList();
+        $achievementCategory = Achievement::getCategoryList();
 
-        $this->render('achievement/international', compact('title', 'achievement', 'categoryList'));
+        $this->render('achievement/international', compact('title', 'achievement', 'achievementCategory'));
         return true;
     }
 
