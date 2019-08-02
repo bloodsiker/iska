@@ -54,24 +54,24 @@
     $(function () {
         "use strict";
 
-        // LINE CHART
-        var line = new Morris.Line({
-            element: 'line-chart',
-            resize: true,
-            data: [
-                {y: '2018-02-08', item1: 372, item2: 4324},
-                {y: '2018-02-09', item1: 832, item2: 9324},
-                {y: '2018-02-10', item1: 552, item2: 5324},
-                {y: '2018-02-11', item1: 232, item2: 4324},
-                {y: '2018-02-12', item1: 492, item2: 7324},
-                {y: '2018-02-13', item1: 352, item2: 2324},
-                {y: '2018-02-14', item1: 752, item2: 5324},
-            ],
-            xkey: 'y',
-            ykeys: ['item1', 'item2'],
-            labels: ['Item 1', 'Item 2'],
-            lineColors: ['#436ce0', '#02bc1f'],
-            hideHover: 'auto'
+        $.ajax({
+            url: "/admin/statistics/ajax",
+            type: "POST",
+            cache: false,
+            success: function (response) {
+                var obj = jQuery.parseJSON(response);
+
+                new Morris.Line({
+                    element: 'line-chart',
+                    resize: true,
+                    data: obj.data,
+                    xkey: obj.xkey,
+                    ykeys: obj.ykeys,
+                    labels: obj.labels,
+                    lineColors: ['#436ce0', '#02bc1f'],
+                    hideHover: 'auto'
+                });
+            }
         });
     });
 </script>

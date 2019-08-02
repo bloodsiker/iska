@@ -17,7 +17,7 @@ class Visit
     {
         $db = MySQL::getConnection();
 
-        $sql = 'SELECT * FROM visits ORDER BY dates DESC LIMIT 7';
+        $sql = 'SELECT * FROM visits ORDER BY dates DESC LIMIT 10';
 
         $result = $db->prepare($sql);
         $result->execute();

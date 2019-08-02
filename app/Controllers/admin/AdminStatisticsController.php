@@ -21,7 +21,33 @@ class AdminStatisticsController extends AdminBase
 
         $this->render('admin_cabinet/admin_statistics/index', compact('statistics'));
         return true;
+    }
 
+    public function actionAjaxChart()
+    {
+        self::checkAdmin();
+
+        $visit = new VisitAnalytics();
+        $statistics = $visit->getStatistics();
+
+        $data = [];
+        $i = 0;
+        foreach ($statistics as $stat) {
+            $data[$i]['y']     = $stat['dates'];
+            $data[$i]['item1'] = $stat['uniq_visit'];
+            $data[$i]['item2'] = $stat['views'];
+            $i++;
+        }
+
+        $response = [
+            'data' => $data,
+            'xkey' => 'y',
+            'ykeys' => ['item1', 'item2'],
+            'labels' => ['Уникальных посетителей', 'Всего просмотров'],
+        ];
+
+        print_r(json_encode($response));
+        return true;
     }
 
 }
