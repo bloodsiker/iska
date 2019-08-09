@@ -62,21 +62,19 @@
             <div class="partner">
                 <h2><span>[</span> ПАРТНЕРИ <span>]</span></h2>
             </div>
-            <div class="section-partner">
-                <div class="logo-partner">
-                    <a href="http://dsmsu.gov.ua/index/ua/" style="margin-left: 67px" target="_blank">
-                        <img src="/template/site/img/partner-3.jpg" alt="міністерство молоді та спорту україни">
-                    </a>
-                </div>
-            </div>
-            <div class="section-partner" style="margin-top: -65px;">
+            <div class="section-partner" style="margin-top: 85px;">
                 <div class="logo-partner">
                     <a href="http://zabijaka.ua/" target="_blank">
                         <img src="/template/site/img/partner-1.png" alt="чемпіон серед ковбас">
                     </a>
                 </div>
+<!--                <div class="logo-partner">-->
+<!--                    <img src="/template/site/img/partner-2.jpg" alt="корреспондент">-->
+<!--                </div>-->
                 <div class="logo-partner">
-                    <img src="/template/site/img/partner-2.jpg" alt="корреспондент">
+                    <a href="http://dsmsu.gov.ua/index/ua/" target="_blank">
+                        <img src="/template/site/img/partner-3.jpg" alt="міністерство молоді та спорту україни">
+                    </a>
                 </div>
                 <div class="logo-partner">
                     <a href="http://www.uni-sport.edu.ua/" target="_blank">
