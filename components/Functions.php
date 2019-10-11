@@ -71,7 +71,7 @@ class Functions
                 break;
 
             case '03':
-                return 'Беразня';
+                return 'Березня';
                 break;
 
             case '04':

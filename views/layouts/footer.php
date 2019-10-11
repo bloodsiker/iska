@@ -62,7 +62,7 @@
             <div class="partner">
                 <h2><span>[</span> ПАРТНЕРИ <span>]</span></h2>
             </div>
-            <div class="section-partner" style="margin-top: 85px;">
+            <div class="section-partner" style="margin-top: 65px;">
                 <div class="logo-partner">
                     <a href="http://zabijaka.ua/" target="_blank">
                         <img src="/template/site/img/partner-1.png" alt="чемпіон серед ковбас">
@@ -80,6 +80,12 @@
                     <a href="http://www.uni-sport.edu.ua/" target="_blank">
                         <img src="/template/site/img/partners/uni-sport.jpg" width="120" alt="Національний університет фізичного виховання і спорту України">
                     </a>
+                </div>
+            </div>
+
+            <div class="section-partner">
+                <div class="logo-partner">
+                    <a href="https://www.amway.ua/user/slider66slider" style="font-size: 26px; color: #fff; text-shadow: 2px 2px 2px #000000;" target="_blank">www.amway.ua/user/slider66slider</a>
                 </div>
             </div>
 
