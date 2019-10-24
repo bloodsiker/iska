@@ -85,8 +85,8 @@
 
             <div class="section-partner">
                 <div class="logo-partner">
-                    <a href="https://www.amway.ua/user/slider66slider" target="_blank" style="margin-left:82px">
-                        <img src="/template/site/img/partners/partner_ss.jpg" width="200" alt="">
+                    <a href="https://www.amway.ua/user/slider66slider" target="_blank" style="margin-left:78px">
+                        <img src="/template/site/img/partners/partner_ss.jpg" width="180" alt="">
                     </a>
                 </div>
             </div>
