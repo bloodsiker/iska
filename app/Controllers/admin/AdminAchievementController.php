@@ -20,14 +20,13 @@ class AdminAchievementController extends AdminBase
             $name = $_POST['name'];
             $alias = $_POST['alias'];
 
-            Achievement::createCategory($category, $name, $alias);
+            $id = Achievement::createCategory($category, $name, $alias);
 
-            Url::previous();
+            Url::redirect('/admin/achievement/international/'.$id);
         }
 
         $this->render('admin_cabinet/admin_achievement/international', compact('categoryList'));
         return true;
-
     }
 
     /**
@@ -47,9 +46,9 @@ class AdminAchievementController extends AdminBase
             $name = $_POST['name'];
             $alias = $_POST['alias'];
 
-            Achievement::createCategory($category, $name, $alias);
+            $id = Achievement::createCategory($category, $name, $alias);
 
-            Url::previous();
+            Url::redirect('/admin/achievement/international/'.$id);
         }
 
 
@@ -63,7 +62,6 @@ class AdminAchievementController extends AdminBase
 
         $this->render('admin_cabinet/admin_achievement/intern_view', compact('achievement', 'categoryList'));
         return true;
-
     }
 
 
@@ -77,7 +75,7 @@ class AdminAchievementController extends AdminBase
 
         $ok = Achievement::deleteCategoryById($id);
         if($ok){
-            Url::previous();
+            Url::redirect('/admin/achievement/international');
         }
         return true;
     }

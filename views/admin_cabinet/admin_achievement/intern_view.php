@@ -36,7 +36,7 @@
                                                     class="fa fa-pencil-square-o"></i></a>
                                         </td>
                                         <td>
-                                            <a href="category/delete/<?php echo $category['id']; ?>" onclick="return confirm('Вы уверены, что хотите удалить категорию ?')" data-toggle="tooltip" title="Удалить"><i class="glyphicon glyphicon-trash delete"></i></a>
+                                            <a href="/admin/achievement/international/delete/<?php echo $category['id']; ?>" onclick="return confirm('Вы уверены, что хотите удалить категорию ?')" data-toggle="tooltip" title="Удалить"><i class="glyphicon glyphicon-trash delete"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -104,6 +104,9 @@
                 <div class="container-modal clearfix">
 
                     <form id="form" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">
+                        <div class="form-group hidden">
+                            <input type="text" name="category" class="form-control" value="international">
+                        </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label" onkeyup="translit()">Название</label>
                             <div class="col-sm-4">
@@ -117,7 +120,7 @@
                             </div>
                         </div>
                         <div class="form-group button-group">
-                            <button name="create" class="btn btn-primary pull-right">Сохранить</button>
+                            <button name="add_category" class="btn btn-primary pull-right">Сохранить</button>
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Отмена
                             </button>
                         </div>

@@ -80,7 +80,11 @@ class Achievement
         $result->bindParam(':category', $category, PDO::PARAM_STR);
         $result->bindParam(':title', $name, PDO::PARAM_STR);
         $result->bindParam(':alias', $alias, PDO::PARAM_STR);
-        return $result->execute();
+
+        if ($result->execute()) {
+            return $db->lastInsertId();
+        }
+        return 0;
     }
 
     /**
