@@ -73,7 +73,7 @@
 <!--                </div>-->
                 <div class="logo-partner">
                     <a href="http://mkms.gov.ua/" target="_blank">
-                        <img src="/template/site/img/partners/partner_ukraine.jpg" width="200" alt="міністерство молоді та спорту україни">
+                        <img src="/template/site/img/partners/partner_ukraine.jpg" width="205" alt="міністерство молоді та спорту україни">
                     </a>
                 </div>
                 <div class="logo-partner">
