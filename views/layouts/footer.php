@@ -72,8 +72,8 @@
 <!--                    <img src="/template/site/img/partner-2.jpg" alt="корреспондент">-->
 <!--                </div>-->
                 <div class="logo-partner">
-                    <a href="http://dsmsu.gov.ua/index/ua/" target="_blank">
-                        <img src="/template/site/img/partner-3.jpg" alt="міністерство молоді та спорту україни">
+                    <a href="http://mkms.gov.ua/" target="_blank">
+                        <img src="/template/site/img/partners/partner_ukraine.jpg" width="200" alt="міністерство молоді та спорту україни">
                     </a>
                 </div>
                 <div class="logo-partner">

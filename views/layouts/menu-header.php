@@ -56,7 +56,7 @@
                     <ul>
                         <li><a class="<?= \App\components\Url::IsActive('/international/', 'active-dropdown')?>" href="/achievement/international/ukraine">міжнародні</a>
                         </li>
-                        <li><a class="<?= \App\components\Url::IsActive('/personal/', 'active-dropdown')?>" href="/achievement/personal">особисті</a></li>
+<!--                        <li><a class="--><?//= \App\components\Url::IsActive('/personal/', 'active-dropdown')?><!--" href="/achievement/personal">особисті</a></li>-->
                     </ul>
                 </li>
                 <li><a class="<?= \App\components\Url::IsActive('/contact', 'active_menu')?> nav-top-link" data-hover="Контакти" href="/contact">Контакти</a></li>
