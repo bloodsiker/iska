@@ -65,7 +65,7 @@
                             <div class="form-group button-group">
                                 <button name="update" class="btn btn-primary pull-right">Сохранить</button>
                                 &nbsp;
-                                <a href="" onclick="window.history.back();" class="btn btn-default pull-right">Отмена
+                                <a href="/admin/media/photo" class="btn btn-default pull-right">Отмена
                                 </a>
                             </div>
                         </form>

@@ -1,4 +1,9 @@
 <?php require_once ROOT . '/views/layouts/header.php'?>
+<script>
+    $(document).ready(function(){
+        $(".view_doc").colorbox({iframe:true, innerWidth:'80%', innerHeight:'90%'});
+    });
+</script>
 <body>
 <?php require_once ROOT . '/views/layouts/tagmanager.php'?>
 

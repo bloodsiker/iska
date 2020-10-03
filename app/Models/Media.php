@@ -17,13 +17,15 @@ class Media
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO list_album '
-            . '(title, sort)'
+            . '(title, sort, path, img)'
             . 'VALUES '
-            . '(:title, :sort)';
+            . '(:title, :sort, :path, :img)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
         $result->bindParam(':sort', $options['sort'], PDO::PARAM_INT);
+        $result->bindParam(':path', $options['path'], PDO::PARAM_STR);
+        $result->bindParam(':img', $options['path'], PDO::PARAM_STR);
         if ($result->execute()) {
             return $db->lastInsertId();
         }

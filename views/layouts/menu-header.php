@@ -28,6 +28,7 @@
                         <li><a class="<?= \App\components\Url::IsActive('/representative', 'active-dropdown')?>" href="/federation/representative">Представники в регіонах</a></li>
                         <li><a class="<?= \App\components\Url::IsActive('/calendar_2016', 'active-dropdown')?>" href="/federation/calendar_2016">Календар всеукраїнських та міжнародних змагань</a></li>
                         <li><a class="<?= \App\components\Url::IsActive('/position', 'active-dropdown')?>" href="/federation/position">Положення</a></li>
+                        <li><a class="<?= \App\components\Url::IsActive('/competition-rules', 'active-dropdown')?>" href="/federation/competition-rules">Правила змагань</a></li>
                         <li><a class="<?= \App\components\Url::IsActive('/rules', 'active-dropdown')?>" href="/federation/rules">Назва розділів</a></li>
                     </ul>
                 </li>

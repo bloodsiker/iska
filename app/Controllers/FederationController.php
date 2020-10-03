@@ -61,11 +61,20 @@ class FederationController extends Controller
     {
         $meta['title'] = '- ПОЛОЖЕННЯ ПРО ПРОВЕДЕННЯ ЧЕМПІОНАТУ УКРАЇНИ З КІКБОКСИНГУ ISKA';
 
-        $federation = Federation::getActivityById(4);
         $listPosition = Documents::getListDocuments(Documents::TYPE_POSITION);
 
-        $this->render('federation/position', compact('meta', 'federation', 'listPosition'));
+        $this->render('federation/position', compact('meta', 'listPosition'));
         return true;
     }
+
+	public function actionCompetitionRules()
+	{
+		$meta['title'] = '- Правила змагань';
+
+		$listPosition = Documents::getListDocuments(Documents::TYPE_COMPETITION_RULES);
+
+		$this->render('federation/competition_rules', compact('meta', 'listPosition'));
+		return true;
+	}
 
 }

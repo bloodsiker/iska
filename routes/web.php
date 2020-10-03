@@ -30,6 +30,7 @@ return array(
     'admin/federation/regions-club/([0-9]+)' => 'admin/AdminFederation@clubsInRegion/$1',
     'admin/federation/list-regions' => 'admin/AdminFederation@listRegions',
     'admin/federation/rules' => 'admin/AdminFederation@rules',
+    'admin/federation/competition-rules' => 'admin/AdminFederation@competitionRules',
     'admin/federation/position/ajax' => 'admin/AdminFederation@ajaxPosition',
     'admin/federation/position/delete/([0-9]+)' => 'admin/AdminFederation@deletePosition/$1',
     'admin/federation/position' => 'admin/AdminFederation@position',
@@ -106,6 +107,7 @@ return array(
     'federation/calendar_2016' => 'Federation@calendar',
     'federation/representative' => 'Federation@representative',
     'federation/position' => 'Federation@position',
+    'federation/competition-rules' => 'Federation@competitionRules',
     'federation/leadership' => 'Federation@leadership',
 
 

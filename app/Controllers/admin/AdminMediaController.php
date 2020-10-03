@@ -21,8 +21,10 @@ class AdminMediaController extends AdminBase
         $albumList = Media::getListAlbum(0);
 
         if (isset($_POST['add_album'])){
+	        $options['path'] = "/upload/media/photo/";
             $options['title'] = $_POST['title'];
             $options['sort'] = $_POST['sort'];
+            $options['img'] = '';
 
             $id = Media::createAlbum($options);
 
@@ -32,7 +34,6 @@ class AdminMediaController extends AdminBase
                     $handle->_mkdir(ROOT."/upload/media/photo/{$id}");
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = $id;
-                    $options['path'] = "/upload/media/photo/";
                     $options['img'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
                     $handle->process(ROOT . $options['path']);
                     if ($handle->processed) {

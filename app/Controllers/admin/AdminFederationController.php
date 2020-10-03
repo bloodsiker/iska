@@ -13,7 +13,8 @@ use upload as FileUpload;
 
 class AdminFederationController extends AdminBase
 {
-    const PATH_UPLOAD = "/upload/docs/federation/";
+    const PATH_UPLOAD       = "/upload/docs/federation/";
+    const PATH_UPLOAD_RULES = "/upload/docs/competition_rules/";
 
     public function actionLeadership()
     {
@@ -214,4 +215,45 @@ class AdminFederationController extends AdminBase
             compact('region', 'regionClubs', 'regionEmails', 'regionPhones'));
         return true;
     }
+
+	public function actionCompetitionRules()
+	{
+		self::checkAdmin();
+
+		$listPosition = Documents::getListDocuments(Documents::TYPE_COMPETITION_RULES);
+
+		if(Request::post('add_position')){
+			$options['type_doc'] = Documents::TYPE_COMPETITION_RULES;
+			$options['title'] = $_POST['title'];
+			$options['path'] = self::PATH_UPLOAD_RULES;
+
+			if (Request::files('file')) {
+				$handle = new FileUpload(Request::files('file'));
+				if ($handle->uploaded) {
+//                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
+					$handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
+					$options['file'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;
+					$handle->process(ROOT . self::PATH_UPLOAD_RULES);
+					if ($handle->processed) {
+						$handle->clean();
+					}
+				}
+			}
+
+			if (Documents::createDocument($options)) {
+				Url::previous();
+			}
+		}
+
+		if(Request::post('update_position')){
+			$id = $_POST['id_position'];
+			$title = $_POST['title'];
+
+			Documents::updateDocumentById($id, $title);
+			Url::previous();
+		}
+
+		$this->render('admin_cabinet/admin_federation/competition_rules', compact('listPosition'));
+		return true;
+	}
 }

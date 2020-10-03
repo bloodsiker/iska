@@ -13,26 +13,29 @@
     <div class="container main">
         <div class="slider-block calendar-block">
             <div class="bookmark bookmark-video">
-                <span>Діяльність - наукова</span>
+                <span>Правила змагань</span>
             </div>
             <div class="position">
                 <ul class="list-position">
-                    <?php if (is_array($listDocuments)): ?>
-                        <?php foreach ($listDocuments as $document): ?>
+                    <?php if (is_array($listPosition)): ?>
+                        <?php foreach ($listPosition as $position): ?>
                             <li>
                                 <img src="/template/site/img/docs.png" width="18px" alt="docs">
-                                <a href="<?=$document['path'] . $document['file']?>" class="view_doc" data-doc-id="<?= $document['id'] ?>" target="_blank"><?=$document['title']?></a>
+                                <a href="<?=$position['path'] . $position['file']?>" class="view_doc" data-doc-id="<?= $position['id'] ?>" target="_blank"><?=$position['title']?></a>
                             </li>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
+
         <?php require_once ROOT . '/views/layouts/sidebar.php'?>
 
     </div>
 </section>
+
 <?php require_once ROOT . '/views/layouts/footer.php'?>
+
 </body>
 </html>
 

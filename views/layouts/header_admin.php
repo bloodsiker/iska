@@ -121,7 +121,8 @@
                         '/admin/federation/position',
                         '/admin/federation/list-regions',
                         '/admin/federation/regions-club',
-                        '/admin/federation/rules'])?> treeview">
+                        '/admin/federation/rules',
+                        '/admin/federation/competition-rules'])?> treeview">
                     <a href="#">
                         <i class="fa fa-th"></i> <span>Федерація</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -149,6 +150,11 @@
                         <li class="<?= App\components\Url::IsActive('/admin/federation/position')?> treeview">
                             <a href="/admin/federation/position">
                                 <i class="fa fa-th"></i> <span>Положення</span>
+                            </a>
+                        </li>
+                        <li class="<?= App\components\Url::IsActive('/admin/federation/competition-rules')?> treeview">
+                            <a href="/admin/federation/competition-rules">
+                                <i class="fa fa-th"></i> <span>Правила змагань</span>
                             </a>
                         </li>
                     </ul>

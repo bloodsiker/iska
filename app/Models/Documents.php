@@ -7,8 +7,9 @@ use PDO;
 
 class Documents
 {
-    const TYPE_POSITION   = 1;
-    const TYPE_SCIENTIFIC = 2;
+    const TYPE_POSITION          = 1;
+    const TYPE_SCIENTIFIC        = 2;
+    const TYPE_COMPETITION_RULES = 3;
 
     /**
      * @param $options
@@ -20,9 +21,9 @@ class Documents
         $db = MySQL::getConnection();
 
         $sql = 'INSERT INTO documents '
-            . '(type_doc, title, path, file)'
+            . '(type_doc, title, path, file, views)'
             . 'VALUES '
-            . '(:type_doc, :title, :path, :file)';
+            . '(:type_doc, :title, :path, :file, 0)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':type_doc', $options['type_doc'], PDO::PARAM_INT);
