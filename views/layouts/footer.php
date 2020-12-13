@@ -103,6 +103,7 @@
                     <a class="email" href="mailto:info@iska.com.ua"></a>
                     <a class="fc" href="https://www.facebook.com/ISKA-Ukraine-1636978163240944/" target="_blank"></a>
                     <a class="yout" href="https://www.youtube.com/channel/UCx5u4uD8qzdVOn83x6sKBAA" target="_blank"></a>
+                    <a class="instagram" href="https://www.instagram.com/iska_ukraine/" target="_blank"></a>
                 </div>
                 <div style="display: none">
                     <p style="text-align: center; font-size: 12px; margin: 5px;">Designed by  <a href="http://ol-b.com/" target="_blank">OL-B GROUP</a></p>

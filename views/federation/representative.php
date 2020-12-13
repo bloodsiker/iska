@@ -3165,7 +3165,7 @@
                     <p>Представник: <br> <?= $region['representative'] ?> <br>
                         <?php if(is_array($region['phones']) && count($region['phones']) > 0): ?>
                             <?php $phones = implode(', ', array_column($region['phones'], 'phone')) ?>
-                            <?= substr($phones, 0, -2) ?>
+                            <?= $phones ?>
                         <?php endif ?>
                     </p>
                     <span class="arrow"></span>
@@ -3391,7 +3391,7 @@
                             <p><strong><?= $region['representative'] ?>
                                     <?php if(is_array($region['phones']) && count($region['phones']) > 0): ?>
                                         <?php $phones = implode(', ', array_column($region['phones'], 'phone')) ?>
-                                        <?= substr($phones, 0, -2) ?>
+                                        <?= $phones ?>
                                     <?php endif ?>
                                 </strong>
                             </p>
@@ -3399,7 +3399,7 @@
                                 <p style="padding-left: 19px"><strong>
                                     Email: ﻿
                                         <?php $emails = implode(', ', array_column($region['emails'], 'email')) ?>
-                                        <?= substr($emails, 0, -2) ?>
+                                        <?= $emails ?>
                                 </strong></p>
                             <?php endif ?>
                             <div class="map-content">
