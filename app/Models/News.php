@@ -7,7 +7,6 @@ use PDO;
 
 class News
 {
-
     const SHOW_BY_DEFAULT = 10;
 
     /**

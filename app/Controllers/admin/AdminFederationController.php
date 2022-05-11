@@ -9,7 +9,7 @@ use App\app\Models\Representative;
 use App\components\AdminBase;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
-use upload as FileUpload;
+use Verot\Upload\Upload;
 
 class AdminFederationController extends AdminBase
 {
@@ -83,7 +83,7 @@ class AdminFederationController extends AdminBase
             $options['path'] = self::PATH_UPLOAD;
 
             if (Request::files('file')) {
-                $handle = new FileUpload(Request::files('file'));
+                $handle = new Upload(Request::files('file'));
                 if ($handle->uploaded) {
 //                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
@@ -228,7 +228,7 @@ class AdminFederationController extends AdminBase
 			$options['path'] = self::PATH_UPLOAD_RULES;
 
 			if (Request::files('file')) {
-				$handle = new FileUpload(Request::files('file'));
+				$handle = new Upload(Request::files('file'));
 				if ($handle->uploaded) {
 //                    $handle->allowed = array('image/jpeg','image/jpg','image/png');
 					$handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);

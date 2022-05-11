@@ -4,10 +4,10 @@
     "type": "project",
     "require": {
         "josantonius/session": "^1.1",
-        "Josantonius/Request": "^1.1",
-        "Josantonius/Url": "^1.1",
+        "josantonius/request": "^1.1",
+        "josantonius/url": "^1.1",
         "josegonzalez/dotenv": "^3.2",
-        "verot/class.upload.php": "dev-master",
+        "verot/class.upload.php": "*",
         "cocur/slugify": "^3.1"
     },
     "autoload": {

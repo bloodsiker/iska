@@ -7,7 +7,7 @@ use App\app\Models\Documents;
 use App\components\AdminBase;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
-use upload as FileUpload;
+use Verot\Upload\Upload;
 
 class AdminActivityController extends AdminBase
 {
@@ -63,7 +63,7 @@ class AdminActivityController extends AdminBase
             $options['path'] = self::PATH_UPLOAD;
 
             if (Request::files('file')) {
-                $handle = new FileUpload(Request::files('file'));
+                $handle = new Upload(Request::files('file'));
                 if ($handle->uploaded) {
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
                     $options['file'] = $handle->file_new_name_body . '.' . $handle->file_src_name_ext;

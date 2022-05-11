@@ -4,6 +4,7 @@ namespace App\app\Controllers;
 
 use App\app\Models\Documents;
 use App\app\Models\Federation;
+use App\app\Models\Leadership;
 use App\app\Models\Representative;
 use App\vendor\controller\Controller;
 
@@ -14,9 +15,9 @@ class FederationController extends Controller
     {
         $title = ' - Керівництво';
 
-        $federation = Federation::getActivityById(1);
+        $list = Leadership::getAllSort();
 
-        $this->render('federation/leadership', compact('title', 'federation'));
+        $this->render('federation/leadership', compact('title', 'list'));
         return true;
     }
 

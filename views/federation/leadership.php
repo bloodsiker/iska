@@ -50,7 +50,24 @@
                 <span>Керівництво</span>
             </div>
             <div class="position">
-                <?=$federation['text']?>
+
+                <h1 style="text-align: center">ФЕДЕРАЦІЯ КІКБОКСИНГУ УКРАЇНИ «ІСКА»</h1>
+
+                <div class="leadership-container">
+                    <?php if (is_array($list)): ?>
+                        <?php foreach ($list as $item): ?>
+                            <div class="leadership-box">
+                                <div class="leadership-photo">
+                                    <img src="<?= $item['photo'] ?: '/template/site/img/No-photo.png' ?>" alt="<?= $item['name'] ?>">
+                                </div>
+                                <div class="leadership-info">
+                                    <div class="leadership-position"><?= $item['position'] ?></div>
+                                    <div class="leadership-name"><?= $item['name'] ?></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
 
             </div>
         </div>

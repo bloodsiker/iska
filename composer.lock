@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92b48a7f10677911ffcfb5d4c6fc8be6",
+    "content-hash": "2850aa8d52ef00d30af05e7315e56b60",
     "packages": [
         {
             "name": "cocur/slugify",
-            "version": "v3.1",
+            "version": "v3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7"
+                "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
-                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/d41701efe58ba2df9cae029c3d21e1518cc6780e",
+                "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e",
                 "shasum": ""
             },
             "require": {
@@ -31,13 +31,13 @@
                 "mikey179/vfsstream": "~1.6",
                 "mockery/mockery": "~0.9",
                 "nette/di": "~2.2",
-                "phpunit/phpunit": "~4.8|~5.2",
+                "phpunit/phpunit": "~4.8.36|~5.2",
                 "pimple/pimple": "~1.1",
                 "plumphp/plum": "~0.1",
                 "silex/silex": "~1.3",
-                "symfony/config": "~2.4|~3.0",
-                "symfony/dependency-injection": "~2.4|~3.0",
-                "symfony/http-kernel": "~2.4|~3.0",
+                "symfony/config": "~2.4|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.4|~3.0|~4.0",
+                "symfony/http-kernel": "~2.4|~3.0|~4.0",
                 "twig/twig": "~1.26|~2.0",
                 "zendframework/zend-modulemanager": "~2.2",
                 "zendframework/zend-servicemanager": "~2.2",
@@ -69,7 +69,11 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2018-01-22T09:00:48+00:00"
+            "support": {
+                "issues": "https://github.com/cocur/slugify/issues",
+                "source": "https://github.com/cocur/slugify/tree/master"
+            },
+            "time": "2019-01-31T20:38:55+00:00"
         },
         {
             "name": "josantonius/request",
@@ -128,6 +132,11 @@
                 "put",
                 "request"
             ],
+            "support": {
+                "forum": "http://stackoverflow.com/tags/josantonius/php-request",
+                "issues": "https://github.com/josantonius/php-request/issues",
+                "source": "https://github.com/josantonius/php-request"
+            },
             "time": "2018-09-24T13:38:04+00:00"
         },
         {
@@ -182,6 +191,11 @@
                 "php",
                 "session"
             ],
+            "support": {
+                "forum": "http://stackoverflow.com/tags/josantonius/php-session",
+                "issues": "https://github.com/josantonius/php-session/issues",
+                "source": "https://github.com/josantonius/php-session"
+            },
             "time": "2018-05-04T08:30:19+00:00"
         },
         {
@@ -239,6 +253,11 @@
                 "uri",
                 "url"
             ],
+            "support": {
+                "forum": "http://stackoverflow.com/tags/josantonius/php-url",
+                "issues": "https://github.com/josantonius/php-url/issues",
+                "source": "https://github.com/josantonius/php-url"
+            },
             "time": "2018-04-17T18:18:48+00:00"
         },
         {
@@ -292,20 +311,24 @@
                 "dotenv",
                 "php"
             ],
+            "support": {
+                "issues": "https://github.com/josegonzalez/php-dotenv/issues",
+                "source": "https://github.com/josegonzalez/php-dotenv/tree/master"
+            },
             "time": "2017-09-19T15:49:58+00:00"
         },
         {
             "name": "m1/env",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/m1/Env.git",
-                "reference": "294addeedf15e1149eeb96ec829f2029d2017d39"
+                "reference": "5c296e3e13450a207e12b343f3af1d7ab569f6f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/m1/Env/zipball/294addeedf15e1149eeb96ec829f2029d2017d39",
-                "reference": "294addeedf15e1149eeb96ec829f2029d2017d39",
+                "url": "https://api.github.com/repos/m1/Env/zipball/5c296e3e13450a207e12b343f3af1d7ab569f6f3",
+                "reference": "5c296e3e13450a207e12b343f3af1d7ab569f6f3",
                 "shasum": ""
             },
             "require": {
@@ -350,24 +373,28 @@
                 "parser",
                 "support"
             ],
-            "time": "2018-06-19T18:55:08+00:00"
+            "support": {
+                "issues": "https://github.com/m1/Env/issues",
+                "source": "https://github.com/m1/Env/tree/2.2.0"
+            },
+            "time": "2020-02-19T09:02:13+00:00"
         },
         {
             "name": "verot/class.upload.php",
-            "version": "dev-master",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "6a4bcb5383634ebf3e802e0eae51af553988c7e8"
+                "reference": "4d9aae875245948d21e42ade332fb45f897f28bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/6a4bcb5383634ebf3e802e0eae51af553988c7e8",
-                "reference": "6a4bcb5383634ebf3e802e0eae51af553988c7e8",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/4d9aae875245948d21e42ade332fb45f897f28bb",
+                "reference": "4d9aae875245948d21e42ade332fb45f897f28bb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=4"
+                "php": ">=5.3"
             },
             "type": "library",
             "autoload": {
@@ -391,17 +418,21 @@
                 "gd",
                 "upload"
             ],
-            "time": "2018-10-31T20:29:58+00:00"
+            "support": {
+                "email": "colin@verot.net",
+                "issues": "https://github.com/verot/class.upload.php/issues",
+                "source": "https://github.com/verot/class.upload.php/tree/2.1.0"
+            },
+            "time": "2020-12-13T22:26:17+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "verot/class.upload.php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }

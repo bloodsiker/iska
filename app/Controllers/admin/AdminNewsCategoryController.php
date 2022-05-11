@@ -8,7 +8,6 @@ use App\components\AdminBase;
 use Cocur\Slugify\Slugify;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
-use upload as FileUpload;
 
 class AdminNewsCategoryController extends AdminBase
 {

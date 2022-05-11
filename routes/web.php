@@ -35,7 +35,10 @@ return array(
     'admin/federation/position/delete/([0-9]+)' => 'admin/AdminFederation@deletePosition/$1',
     'admin/federation/position' => 'admin/AdminFederation@position',
     'admin/federation/calendar' => 'admin/AdminFederation@calendar',
-    'admin/federation/leadership' => 'admin/AdminFederation@leadership',
+
+    'admin/federation/leadership/update/([0-9]+)' => 'admin/AdminLeadership@update/$1',
+    'admin/federation/leadership/delete/([0-9]+)' => 'admin/AdminLeadership@delete/$1',
+    'admin/federation/leadership' => 'admin/AdminLeadership@index',
 
     // Админ панель досягнення
     'admin/achievement/international/delete/([0-9]+)' => 'admin/AdminAchievement@categoryDelete/$1',

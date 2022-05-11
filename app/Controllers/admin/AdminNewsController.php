@@ -8,7 +8,7 @@ use App\components\AdminBase;
 use Cocur\Slugify\Slugify;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
-use upload as FileUpload;
+use Verot\Upload\Upload;
 
 class AdminNewsController extends AdminBase
 {
@@ -33,7 +33,7 @@ class AdminNewsController extends AdminBase
             $id = News::createNews($options);
 
             if ($id && Request::files('image')) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
@@ -76,7 +76,7 @@ class AdminNewsController extends AdminBase
             $options['data_create'] = Request::post('data_create');
 
             if (News::updateNewsById($id, $options) && Request::files('image')) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
@@ -97,7 +97,7 @@ class AdminNewsController extends AdminBase
         }
 
         if (Request::post('add_img')) {
-            $handle = new FileUpload(Request::files('image'));
+            $handle = new Upload(Request::files('image'));
             if ($handle->uploaded) {
                 $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                 $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);

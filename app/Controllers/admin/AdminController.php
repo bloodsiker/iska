@@ -9,7 +9,7 @@ use App\components\AdminBase;
 use Josantonius\Request\Request;
 use Josantonius\Session\Session;
 use Josantonius\Url\Url;
-use upload as FileUpload;
+use Verot\Upload\Upload;
 
 /**
  * Class AdminController
@@ -35,7 +35,7 @@ class AdminController extends AdminBase
             $options['path'] = self::PATH_SLIDER_UPLOAD;
 
             if (Request::files('image')) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);
@@ -60,7 +60,7 @@ class AdminController extends AdminBase
             $options['path'] = self::PATH_EVENT_UPLOAD;
 
             if (Request::files('image')) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = substr_replace(sha1(microtime(true)), '', 12);

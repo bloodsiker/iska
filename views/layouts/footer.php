@@ -60,14 +60,14 @@
     <footer >
         <div class="container main-footer">
             <div class="partner">
-                <h2><span>[</span> ПАРТНЕРИ <span>]</span></h2>
+<!--                <h2><span>[</span> ПАРТНЕРИ <span>]</span></h2>-->
             </div>
             <div class="section-partner" style="margin-top: 50px;">
-                <div class="logo-partner">
-                    <a href="http://zabijaka.ua/" target="_blank">
-                        <img src="/template/site/img/partner-1.png" alt="чемпіон серед ковбас">
-                    </a>
-                </div>
+<!--                <div class="logo-partner">-->
+<!--                    <a href="http://zabijaka.ua/" target="_blank">-->
+<!--                        <img src="/template/site/img/partner-1.png" alt="чемпіон серед ковбас">-->
+<!--                    </a>-->
+<!--                </div>-->
 <!--                <div class="logo-partner">-->
 <!--                    <img src="/template/site/img/partner-2.jpg" alt="корреспондент">-->
 <!--                </div>-->
@@ -83,13 +83,13 @@
                 </div>
             </div>
 
-            <div class="section-partner">
-                <div class="logo-partner">
-                    <a href="https://www.amway.ua/user/slider66slider" target="_blank" style="margin-left:78px">
-                        <img src="/template/site/img/partners/partner_ss.jpg" width="180" alt="">
-                    </a>
-                </div>
-            </div>
+<!--            <div class="section-partner">-->
+<!--                <div class="logo-partner">-->
+<!--                    <a href="https://www.amway.ua/user/slider66slider" target="_blank" style="margin-left:78px">-->
+<!--                        <img src="/template/site/img/partners/partner_ss.jpg" width="180" alt="">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="footer-contact">
                 <div class="contact">

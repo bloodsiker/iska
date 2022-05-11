@@ -7,7 +7,7 @@ use App\components\AdminBase;
 use App\components\Functions;
 use Josantonius\Request\Request;
 use Josantonius\Url\Url;
-use upload as FileUpload;
+use Verot\Upload\Upload;
 
 class AdminMediaController extends AdminBase
 {
@@ -29,7 +29,7 @@ class AdminMediaController extends AdminBase
             $id = Media::createAlbum($options);
 
             if ($id && Request::files('image')) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->_mkdir(ROOT."/upload/media/photo/{$id}");
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
@@ -67,7 +67,7 @@ class AdminMediaController extends AdminBase
             $options['archive'] = $_POST['archive'];
 
             if (Media::updateAlbumById($id, $options)) {
-                $handle = new FileUpload(Request::files('image'));
+                $handle = new Upload(Request::files('image'));
                 if ($handle->uploaded) {
                     $handle->allowed = ['image/jpeg','image/jpg','image/png'];
                     $handle->file_new_name_body = $id;

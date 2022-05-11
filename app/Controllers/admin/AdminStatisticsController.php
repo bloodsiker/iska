@@ -2,13 +2,8 @@
 
 namespace App\app\Controllers\admin;
 
-use App\app\Models\Activity;
-use App\app\Models\Documents;
 use App\app\Services\VisitAnalytics;
 use App\components\AdminBase;
-use Josantonius\Request\Request;
-use Josantonius\Url\Url;
-use upload as FileUpload;
 
 class AdminStatisticsController extends AdminBase
 {
