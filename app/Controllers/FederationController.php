@@ -15,7 +15,7 @@ class FederationController extends Controller
     {
         $title = ' - Керівництво';
 
-        $list = Leadership::getAllSort();
+        $list = Leadership::getAllForSite();
 
         $this->render('federation/leadership', compact('title', 'list'));
         return true;

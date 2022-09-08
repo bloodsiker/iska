@@ -14,16 +14,14 @@ class Leadership
     {
         $db = MySQL::getConnection();
 
-        $sql = "SELECT * FROM leaderships 
-                WHERE status = '1' 
-                ORDER BY id DESC";
+        $sql = "SELECT * FROM leaderships ORDER BY id DESC";
 
         $result = $db->prepare($sql);
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getAllSort()
+    public static function getAllForSite()
     {
         $db = MySQL::getConnection();
 

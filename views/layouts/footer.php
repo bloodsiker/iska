@@ -93,7 +93,6 @@
 
             <div class="footer-contact">
                 <div class="contact">
-                    тел. +38(067)746-39-83  <br>
                     тел. +38(063)592-01-01 <br>
                     email: info@iska.com.ua
                 </div>
@@ -108,6 +107,7 @@
                 <div style="display: none">
                     <p style="text-align: center; font-size: 12px; margin: 5px;">Designed by  <a href="http://ol-b.com/" target="_blank">OL-B GROUP</a></p>
                 </div>
+                <a href="https://naturalstones-jewerly.com.ua/" style="position: fixed; right: 9999px">Naturalstones-jewerly</a>
             </div>
 
 
