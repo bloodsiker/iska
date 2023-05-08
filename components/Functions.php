@@ -4,6 +4,16 @@ namespace App\components;
 
 class Functions
 {
+    /**
+     * Хэшируем пароль
+     * @param $password
+     * @return string
+     */
+    public static function hashPass($password){
+        $salt = substr(md5($password), 0, 5);
+        return hash("sha256", $password . $salt);
+    }
+
     // Обрезаем сообщение от пользователя
     public static function crop_str($string, $limit= '50')
     {
@@ -21,9 +31,9 @@ class Functions
         if(strlen($string) > 50) {
             $first = mb_substr($string, 0, $limit, 'UTF-8');
             return $first . '...';
-        } else {
-            return $string;
         }
+
+        return $string;
     }
 
     // Получаем id видео lODeKZUOjpY
@@ -33,9 +43,7 @@ class Functions
         $text = $url;
         $str = parse_url($text);
         $url = $str["query"];
-        $crop_url = substr($url,2);
-
-        return $crop_url;
+        return substr($url,2);
     }
 
 

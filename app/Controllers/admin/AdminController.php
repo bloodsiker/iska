@@ -6,6 +6,7 @@ use App\app\Models\Admin;
 use App\app\Models\Banner;
 use App\app\Models\Event;
 use App\components\AdminBase;
+use App\components\Functions;
 use Josantonius\Request\Request;
 use Josantonius\Session\Session;
 use Josantonius\Url\Url;
@@ -140,7 +141,7 @@ class AdminController extends AdminBase
 
         if(isset($_POST['submit'])) {
             $login = $_POST['login'];
-            $password = $_POST['password'];
+            $password = Functions::hashPass($_POST['password']);
 
             $errors = false;
 
@@ -161,7 +162,6 @@ class AdminController extends AdminBase
 
         require_once(ROOT . '/views/admin_cabinet/admin/auth.php');
         return true;
-
     }
 
     /**

@@ -47,7 +47,7 @@
                                 <label for="exampleInputPassword1">Пароль</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-exclamation"></i></span>
-                                    <input type="password" name="password" class="form-control" value="<?php echo $user['password']?>" placeholder="Пароль">
+                                    <input type="text" name="password" class="form-control" value="" placeholder="Пароль">
                                 </div>
                             </div>
 

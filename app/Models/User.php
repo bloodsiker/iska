@@ -72,7 +72,8 @@ class User
     {
         $db = MySQL::getConnection();
 
-        $sql = "UPDATE admin
+        if (isset($options['password'])) {
+            $sql = "UPDATE admin
             SET
                 login = :login,
                 password = :password,
@@ -82,14 +83,33 @@ class User
                 data_update = :data_update
             WHERE id = :id";
 
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':login', $options['login'], PDO::PARAM_STR);
-        $result->bindParam(':password', $options['password'], PDO::PARAM_STR);
-        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
-        $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
-        $result->bindParam(':role', $options['role'], PDO::PARAM_STR);
-        $result->bindParam(':data_update', $options['data_update'], PDO::PARAM_STR);
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam(':login', $options['login'], PDO::PARAM_STR);
+            $result->bindParam(':password', $options['password'], PDO::PARAM_STR);
+            $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+            $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
+            $result->bindParam(':role', $options['role'], PDO::PARAM_STR);
+            $result->bindParam(':data_update', $options['data_update'], PDO::PARAM_STR);
+        } else {
+            $sql = "UPDATE admin
+            SET
+                login = :login,
+                name = :name,
+                email = :email,
+                role = :role,
+                data_update = :data_update
+            WHERE id = :id";
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam(':login', $options['login'], PDO::PARAM_STR);
+            $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+            $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
+            $result->bindParam(':role', $options['role'], PDO::PARAM_STR);
+            $result->bindParam(':data_update', $options['data_update'], PDO::PARAM_STR);
+        }
+
         return $result->execute();
     }
 

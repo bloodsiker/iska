@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label for="sort" class="col-sm-3 control-label">Пароль</label>
                             <div class="col-sm-4">
-                                <input type="password" name="password" class="form-control" id="sort" >
+                                <input type="text" name="password" class="form-control" id="sort" >
                             </div>
                         </div>
                         <div class="form-group">

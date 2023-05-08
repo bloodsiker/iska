@@ -4,6 +4,7 @@ namespace App\app\Controllers\admin;
 
 use App\app\Models\User;
 use App\components\AdminBase;
+use App\components\Functions;
 use Josantonius\Url\Url;
 
 class AdminUserController extends AdminBase
@@ -19,7 +20,7 @@ class AdminUserController extends AdminBase
             $options['login'] = $_POST['login'];
             $options['name'] = $_POST['name'];
             $options['email'] = $_POST['email'];
-            $options['password'] = $_POST['password'];
+            $options['password'] = Functions::hashPass($_POST['password']);
             $options['role'] = $_POST['role'];
             $options['data_create'] = $data_create;
 
@@ -43,11 +44,14 @@ class AdminUserController extends AdminBase
 
         if (isset($_POST['update'])) {
             $options['login'] = $_POST['login'];
-            $options['password'] = $_POST['password'];
             $options['name'] = $_POST['name'];
             $options['email'] = $_POST['email'];
             $options['role'] = $_POST['role'];
             $options['data_update'] = date("Y-m-d");
+
+            if (isset($_POST['password'])) {
+                $options['password'] = Functions::hashPass($_POST['password']);
+            }
 
             User::updateUserById($id, $options);
             Url::redirect('/admin/user');
